@@ -1,12 +1,5 @@
 
-/*--- IMPORTANT GUIDELINES --- 
-1. Use div #canvas-svg for svg rendering
-    var svg = d3.select("#canvas-svg");
-2. 'data' variable contains JSON data from Data tab
-   'config' variable contains data from Properties tab
-    Do NOT overwrite these variables
-3. To define customizable properties, use capitalized variable names,
-    and define them in Properties tab ---*/
+
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 500 - margin.left - margin.right,
