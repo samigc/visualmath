@@ -8,7 +8,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
 var radio= 100
 var center={x:(width + margin.left)/2, y: (height+margin.top)/2 };
 
-var svg = d3.select("#canvas-svg").append("svg")
+var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom);
    

@@ -11,7 +11,7 @@ var dragged = null,
 
 var line = d3.svg.line();
 
-var svg = d3.select("#canvas-svg").append("svg")
+var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("tabindex", 1);
@@ -19,7 +19,7 @@ var svg = d3.select("#canvas-svg").append("svg")
 var a=numeric.identity(10);
 console.log(a);
 
-d3.select("#canvas-svg").append("p").text("Vectors");
+d3.select("body").append("p").text("Vectors");
 
 svg.append("rect")
     .attr("width", width)
@@ -58,7 +58,9 @@ d3.select("#interpolate")
     .attr("value", function(d) { return d; })
     .text(function(d) { return d; });
 
-//svg.node().focus();
+//
+
+svg.node().focus();
 
 function redraw() {
   svg.select("path").attr("d", line);
