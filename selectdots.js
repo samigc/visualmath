@@ -1,27 +1,79 @@
-
+//Svg parameters
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 1000 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
+//axis
+var x= d3.scale.linear()
+.domain([-width/2,width/2])
+.range([0,width]);
+
+var y=d3.scale.linear()
+.domain([-height/2,height/2])
+.range([height,0]);
+
+var xAxis =d3.svg.axis()
+.scale(x)
+.orient("bottom")
+.ticks(10)
+.tickSize(-height);
+
+var yAxis =d3.svg.axis()
+.scale(y)
+.orient("left")
+.ticks(10)
+.tickSize(-width);
+
+
+console.log(d3.behavior.zoom()
+    /*.x(x)
+    .y(y)*/
+    
+    .on("zoom",zoomed));
+
+
+
+//data
 var states = [
     { x : 44, y : 68, label : "first" },
     { x : 340, y : 150, label : "second" },
-    { x : 300, y : 350, label : "third" },
-    { x : 300, y : 350, label : "fourth" },
-    { x : 50, y : 270, label : "fifth" },
-    { x : 500, y : 400, label : "last" }
-]
-
+    ]
+//svg inside windows and zoom behavior of
 window.svg = d3.select("body")
 .append("svg")
-.attr("width", width   )
-.attr("height", height );    
+.attr("width", width )
+.attr("height", height )
+.append("g")
+.call(d3.behavior.zoom()
+    .x(x)
+    .y(y)
+    .scaleExtent([1,32])
+    .on("zoom",zoomed))
+.append("g");
 
 
 
+//function zoomed
+function zoomed() {
+    window.svg.attr("transform","translate("+d3.event.translate+")scale("+d3.event.scale+")")
+};
+
+window.svg.append("rect")
+    .attr("width", width )
+    .attr("height", height );
+
+window.svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform","translate(0,"+height+")")
+    .call(xAxis);
+window.svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+//select all dots
 var SelDots=svg.selectAll( "g.state")
 .data(states);
-
+//insert dots
 var SelDot= SelDots
 .enter()
 .append( "g")
@@ -30,13 +82,7 @@ var SelDot= SelDots
             return "translate (" + [d.x,d.y] + ")";
         },
         'class'   : 'state',
-        /*r       : 10,
-        cx      : function( state) {
-            return state.x;
-        },
-        cy      : function( state) {
-            return state.y;
-        }*/
+     
     })
    /* .on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
     .on("mouseout", function(){d3.select(this).style("fill", "white");})*/;
@@ -45,13 +91,34 @@ var SelDot= SelDots
 //svg.append("circle").attr("class","selected").attr("r",13);
 
 
-console.log("first flag");
+console.log(d3.behavior.drag().on("dragstart",dragini));
 
+//drag functions
+function dragini (d) {
+    d3.event.sourceEvent.stopPropagation();
+    d3.select(this).classed("dragging",true);
+};
+function drag0 (d) {
+    d3.select(this)
+        .attr("cx",function (d,i){ d.x+=d3.event.dx;  return d.x;})
+        .attr("cy",function (d,i){ d.y+=d3.event.dy; return d.y;})
+};
 
+function dragfini (d) {
+    d3.select(this)
+        .classed("dragging",false);
+};
 //var funcion=function(d,i){ return d3.event.dx;};
 var drag= d3.behavior.drag()
-    
-    .on("drag",  function (d,i) {
+    .origin(function (d){
+        
+        return d;
+        
+    })
+    .on("dragstart",dragini)
+    .on("drag",drag0)
+    .on("dragend",dragfini);
+    /*.on("drag",  function (d,i) {
         
         var selected= d3.selectAll(".selected");
 
@@ -64,40 +131,39 @@ var drag= d3.behavior.drag()
             d.x+=d3.event.dx    
             d.y+=d3.event.dy    
         return "translate (" + [d.x,d.y]+ ")";
-        });
-        /*selected.attr("transform",function(d,i) {
-            return "scale (" + d3.event.dy + ")";
         })
-        ;*/
-        this.parentNode.appendChild(this)
+        selected.attr("transition",100);
+        
+
+        this.parentNode.appendChild(this);
         d3.event.sourceEvent.stopPropagation();
 
-        //return console.log(!(!d3.event.ctrlKey));
-    });
+        return console.log(!(!d3.event.ctrlKey));
+    });*/
 
+//drag dots
 SelDot.call(drag);
-
+//draw dots
 SelDot.append("circle")
     .attr({
-        r : 10,
+        r : 15,
         class : 'outer' 
     });
 
 SelDot.append("circle")
     .attr(
         {
-        r : 8,
+        r : 13,
         class : 'inner' 
     })
     .on("click", function(d,i){
-        
+        //
         d3.select(this.parentNode).classed("selected")
         console.log("Es" +this +"y esta contenido en"+this.parentNode)   
         console.log(!!d3.event.ctrlKey)
-          
     })
-    .on("mouseover", function(){d3.select(this).style("fill","aliceblue")})
-    .on("mouseout l", function(){d3.select(this).style("fill","blue")})
+    .on("mouseover", function(){d3.select(this).style("fill","rgba(10,100,200,1)")})
+    .on("mouseout", function(){d3.select(this).style("fill","rgba(10,200,100,1)").style("opacity",0.5)})
     ;
 
 

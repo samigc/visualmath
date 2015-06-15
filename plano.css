@@ -37,7 +37,7 @@ circle {
   box-shadow: 4px;
 }*/
 
-.selection {
+.selected {
     stroke          : gray;
     stroke-width    : 1px;
     stroke-dasharray: 4px;
@@ -57,14 +57,15 @@ g.state circle {
 
 g.state circle.inner {
     stroke-dasharray: 4px;
-    stroke-opacity  : 0.5;
-    fill    :blue;
+    stroke-opacity  : 0.1;
+    fill    : rgb(10,200,100);
 }
 
 g.state circle.outer {
     
-    stroke-dasharray: 4px;
+
     stroke-opacity  : 0.5;
+    stroke          : rgb(100,20,100);
     fill            : transparent;
 }
 
@@ -79,14 +80,21 @@ g.state text {
 }
 
     /* disable text selection */
-svg *::selection {
-    background : transparent;
-}
+
+
 
 svg *::-moz-selection {
     background:transparent;
 }
 
-svg *::-webkit-selection {
-    background:transparent;
+
+
+rect {
+  fill: #ddd;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #fff;
 }
