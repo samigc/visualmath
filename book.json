@@ -1,7 +1,8 @@
 {
     "plugins": [
         "gitbook-plugin-addcssjs",
-        "katex"
+        "katex",
+        "autosize-iframe"
     ],
     "pluginsConfig": {
         "gitbook-plugin-addcssjs": {
