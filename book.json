@@ -1,6 +1,7 @@
 {
     "plugins": [
-        "gitbook-plugin-addcssjs"
+        "gitbook-plugin-addcssjs",
+        "katex"
     ],
     "pluginsConfig": {
         "gitbook-plugin-addcssjs": {
