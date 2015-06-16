@@ -1,11 +1,12 @@
-/*
+
 body {
   font: 13px sans-serif;
   position: relative;
   width: 960px;
   height: 500px;
+  shape-rendering: crispEdges;
 }
-
+/*
 form {
   position: absolute;
   bottom: 10px;
@@ -56,15 +57,15 @@ g.state circle {
 }
 
 g.state circle.inner {
-    stroke-dasharray: 4px;
-    stroke-opacity  : 0.1;
-    fill    : rgb(10,200,100);
+    
+    stroke-opacity  : 0.5;
+    fill            : rgba(10,200,100,1);
+    stroke          : rgba(10,100,200,1);
+    stroke-width    : 1.5px;
 }
 
 g.state circle.outer {
-    
-
-    stroke-opacity  : 0.5;
+    stroke-opacity  : 0.3;
     stroke          : rgb(100,20,100);
     fill            : transparent;
 }

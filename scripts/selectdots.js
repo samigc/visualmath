@@ -1,7 +1,7 @@
 //Svg parameters
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 1000 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 900 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 //axis
 var x= d3.scale.linear()
@@ -15,22 +15,22 @@ var y=d3.scale.linear()
 var xAxis =d3.svg.axis()
 .scale(x)
 .orient("bottom")
-.ticks(10)
+//.ticks(10)
 .tickSize(-height);
 
 var yAxis =d3.svg.axis()
 .scale(y)
 .orient("left")
-.ticks(10)
+//.ticks(20)
 .tickSize(-width);
 
 
-console.log(d3.behavior.zoom()
-    /*.x(x)
-    .y(y)*/
-    
-    .on("zoom",zoomed));
-
+//zoom for axis function
+var zoomaxis=d3.behavior.zoom()
+    .x(x)
+    .y(y)
+    .scaleExtent([-10,50])
+    .on("zoom",zoomedaxis);
 
 
 //data
@@ -44,19 +44,22 @@ window.svg = d3.select("body")
 .attr("width", width )
 .attr("height", height )
 .append("g")
-.call(d3.behavior.zoom()
-    .x(x)
-    .y(y)
-    .scaleExtent([1,32])
-    .on("zoom",zoomed))
-.append("g");
+.attr("transform","translate ("+margin.left+","+0+")")
+.call(zoomaxis)
+;
 
 
 
-//function zoomed
-function zoomed() {
-    window.svg.attr("transform","translate("+d3.event.translate+")scale("+d3.event.scale+")")
+//function zoomed who move only the background
+function zoomedaxis() {
+    svg.select(".x.axis").call(xAxis);
+    svg.select(".y.axis").call(yAxis);
+    console.log(d3.event.translate[1]);
+    svg.selectAll("g.state").attr("transform","translate("+d3.event.translate+")");
+    
 };
+
+
 
 window.svg.append("rect")
     .attr("width", width )
@@ -78,17 +81,11 @@ var SelDot= SelDots
 .enter()
 .append( "g")
     .attr({
-        'transform' : function(d){
+       /* 'transform' : function(d){
             return "translate (" + [d.x,d.y] + ")";
-        },
+        },*/
         'class'   : 'state',
-     
-    })
-   /* .on("mouseover", function(){d3.select(this).style("fill", "aliceblue");})
-    .on("mouseout", function(){d3.select(this).style("fill", "white");})*/;
-   
-
-//svg.append("circle").attr("class","selected").attr("r",13);
+    });
 
 
 console.log(d3.behavior.drag().on("dragstart",dragini));
@@ -99,61 +96,52 @@ function dragini (d) {
     d3.select(this).classed("dragging",true);
 };
 function drag0 (d) {
-    d3.select(this)
-        .attr("cx",function (d,i){ d.x+=d3.event.dx;  return d.x;})
-        .attr("cy",function (d,i){ d.y+=d3.event.dy; return d.y;})
-};
-
-function dragfini (d) {
-    d3.select(this)
-        .classed("dragging",false);
-};
-//var funcion=function(d,i){ return d3.event.dx;};
-var drag= d3.behavior.drag()
-    .origin(function (d){
-        
-        return d;
-        
-    })
-    .on("dragstart",dragini)
-    .on("drag",drag0)
-    .on("dragend",dragfini);
-    /*.on("drag",  function (d,i) {
-        
-        var selected= d3.selectAll(".selected");
-
+  /*  var selected= d3.selectAll(".selected");
         if(selected.indexOf(this)==-1){
             selected.classed("selected",false);
             selected= d3.select(this);
             selected.classed("selected",true);    
         }
         selected.attr("transform", function(d,i){
-            d.x+=d3.event.dx    
-            d.y+=d3.event.dy    
-        return "translate (" + [d.x,d.y]+ ")";
-        })
-        selected.attr("transition",100);
-        
+            
+                
+            return "translate (" + [d3.event.dx    ,d3.event.dy]+ ")";
+            console.log(d.x);
+        })*/
+    //d3.event.sourceEvent.stopPropagation();
+    d3.select(this)
+        .attr("cx", function(d){return d.x+=d3.event.dx;})
+        .attr("cy", function(d){return d.y+=d3.event.dy;});
+    //console.log(d3.event)
+};
 
-        this.parentNode.appendChild(this);
-        d3.event.sourceEvent.stopPropagation();
+function dragfini (d) {
+    //d3.event.sourceEvent.stopPropagation();
+    d3.select(this)
+        .classed("dragging",false);
+};
 
-        return console.log(!(!d3.event.ctrlKey));
-    });*/
 
-//drag dots
-SelDot.call(drag);
+//var funcion=function(d,i){ return d3.event.dx;};
+var drag= d3.behavior.drag()
+    .origin(function (d){
+        return d;
+    })
+    .on("dragstart",dragini)
+    .on("drag",drag0)
+    .on("dragend",dragfini);
+
+//attach dots to background
+
+//SelDot.call(zoom);
+
 //draw dots
-SelDot.append("circle")
-    .attr({
-        r : 15,
-        class : 'outer' 
-    });
-
 SelDot.append("circle")
     .attr(
         {
-        r : 13,
+        cx      : function (d){return d.x;},
+        cy      : function (d){return d.y;},
+        r : 13,        
         class : 'inner' 
     })
     .on("click", function(d,i){
@@ -162,10 +150,14 @@ SelDot.append("circle")
         console.log("Es" +this +"y esta contenido en"+this.parentNode)   
         console.log(!!d3.event.ctrlKey)
     })
+
+    .call(drag)
+
     .on("mouseover", function(){d3.select(this).style("fill","rgba(10,100,200,1)")})
     .on("mouseout", function(){d3.select(this).style("fill","rgba(10,200,100,1)").style("opacity",0.5)})
     ;
 
+console.log();
 
 /*svg
 .on( "mousedown", function() {
