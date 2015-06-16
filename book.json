@@ -8,10 +8,10 @@
             "pluginsConfig": {
                 "addcssjs": {
                     "js": [
-                        "js/custom.js"
+                        "selectdots.js"
                     ],
                     "css": [
-                        "css/custom.css"
+                        "plano.css"
                     ]
                 }
             }
