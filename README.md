@@ -1,2 +1,6 @@
-# visualmath
-Visualizations of foundations of mathematics 
+# Visualmath
+Dynamic and interactive visualizations of foundations of Algebraic Geometry.
+
+
+
+
