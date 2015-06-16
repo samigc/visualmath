@@ -10,4 +10,4 @@ En la siguiente visualización se podrá ver la geometría tras la combinación 
      js
     var a = {};
 
-
+[Acá veremos un ejemplo](http://bl.ocks.org/mbostock/raw/3892919/)
