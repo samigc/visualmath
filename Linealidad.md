@@ -11,3 +11,6 @@ En la siguiente visualización se podrá ver la geometría tras la combinación 
     var a = {};
 
 [Acá veremos un ejemplo](http://bl.ocks.org/mbostock/raw/3892919/)
+
+<h1>Titulo</h1>
+<div id="animation1" style="color(#00ff44)">
