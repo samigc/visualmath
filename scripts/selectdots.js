@@ -54,8 +54,8 @@ window.svg = d3.select("body")
 function zoomedaxis() {
     svg.select(".x.axis").call(xAxis);
     svg.select(".y.axis").call(yAxis);
-    console.log(d3.event.translate[1]);
-    svg.selectAll("g.state").attr("transform","translate("+d3.event.translate+")");
+    console.log(d3.event.translate[0]);
+    SelDots.attr("transform","translate ("+d3.event.translate+")");
     
 };
 
@@ -81,7 +81,7 @@ var SelDot= SelDots
 .enter()
 .append( "g")
     .attr({
-       /* 'transform' : function(d){
+        /*'transform' : function(d){
             return "translate (" + [d.x,d.y] + ")";
         },*/
         'class'   : 'state',
@@ -109,9 +109,13 @@ function drag0 (d) {
             console.log(d.x);
         })*/
     //d3.event.sourceEvent.stopPropagation();
+    
     d3.select(this)
-        .attr("cx", function(d){return d.x+=d3.event.dx;})
-        .attr("cy", function(d){return d.y+=d3.event.dy;});
+        .attr("transform", function(d,i){
+            d.x+=d3.event.dx
+            d.y+=d3.event.dy
+            return "translate (" +[d.x, d.y]+")";})
+        
     //console.log(d3.event)
 };
 
@@ -152,12 +156,11 @@ SelDot.append("circle")
     })
 
     .call(drag)
-
+    .call(zoomedaxis)
     .on("mouseover", function(){d3.select(this).style("fill","rgba(10,100,200,1)")})
     .on("mouseout", function(){d3.select(this).style("fill","rgba(10,200,100,1)").style("opacity",0.5)})
     ;
 
-console.log();
 
 /*svg
 .on( "mousedown", function() {
