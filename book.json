@@ -1,0 +1,21 @@
+{
+    "plugins": [
+        "gitbook-plugin-addcssjs",
+        "katex",
+        "autosize-iframe"
+    ],
+    "pluginsConfig": {
+        "gitbook-plugin-addcssjs": {
+            "pluginsConfig": {
+                "addcssjs": {
+                    "js": [
+                        "selectdots.js"
+                    ],
+                    "css": [
+                        "plano.css"
+                    ]
+                }
+            }
+        }
+    }
+}
