@@ -72,6 +72,7 @@ g.state circle.outer {
 
 g.state.selected circle.outer {
     display         : inline;
+    border-radius   : 14;
 }
 
 g.state text {

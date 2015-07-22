@@ -165,7 +165,6 @@ SelDot.append("circle")
 /*svg
 .on( "mousedown", function() {
     var p = d3.mouse(this);
-
     svg.append( "rect")
     .attr({
         rx      : 10,
@@ -179,10 +178,8 @@ SelDot.append("circle")
 })
 .on( "mousemove", function() {
     var s = svg.select( "rect.selection");
-
     if( !s.empty()) {
         var p = d3.mouse( this),
-
             d = {
                 x       : parseInt( s.attr( "x"), 10),
                 y       : parseInt( s.attr( "y"), 10),
@@ -194,14 +191,12 @@ SelDot.append("circle")
                 y : p[1] - d.y
             }
         ;
-
         if( move.x < 1 || (move.x*2<d.width)) {
             d.x = p[0];
             d.width -= move.x;
         } else {
             d.width = move.x;       
         }
-
         if( move.y < 1 || (move.y*2<d.height)) {
             d.y = p[1];
             d.height -= move.y;
@@ -216,5 +211,3 @@ SelDot.append("circle")
 .on( "mouseup", function() {
     svg.select( ".selection").remove();
 });*/
-
-console.log("hola soyfeliz");
