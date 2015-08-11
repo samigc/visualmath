@@ -22,10 +22,11 @@ vectore(-100,200,200,200,width,height);
 
 paths = d3.select(".board ")
 .append("svg:g")
-.attr("id", "selmarker");
+.attr("id", "selmark");
 
-paths.select("#selmark")
-  .on("mouseover",console.log("mouseover en el marker funciona"))
+paths.selectAll(".selmark")
+  .on("mouseover",function(d,i){
+      console.log("mouseover en el marker funciona")})
   .on("mouseout",console.log("mouseout en el marker funciona"));
  /*var line= d3.svg.line()
    .x(function(d) { return d.x; })
