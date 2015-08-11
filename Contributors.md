@@ -1,3 +1,0 @@
-
-####Sandra Guayambuco
-####Mike Bostock
