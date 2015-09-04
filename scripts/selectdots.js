@@ -48,7 +48,7 @@ window.svg = d3.select("body")
 .call(zoomaxis)
 ;
 
-
+vectore(0,0,100,100,width,height);
 
 //function zoomed who move only the background
 function zoomedaxis() {
@@ -56,7 +56,7 @@ function zoomedaxis() {
     svg.select(".y.axis").call(yAxis);
     console.log(d3.event.translate[0]);
     SelDots.attr("transform","translate ("+d3.event.translate+")");
-    
+
 };
 
 
@@ -100,22 +100,22 @@ function drag0 (d) {
         if(selected.indexOf(this)==-1){
             selected.classed("selected",false);
             selected= d3.select(this);
-            selected.classed("selected",true);    
+            selected.classed("selected",true);
         }
         selected.attr("transform", function(d,i){
-            
-                
+
+
             return "translate (" + [d3.event.dx    ,d3.event.dy]+ ")";
             console.log(d.x);
         })*/
     //d3.event.sourceEvent.stopPropagation();
-    
+
     d3.select(this)
         .attr("transform", function(d,i){
             d.x+=d3.event.dx
             d.y+=d3.event.dy
             return "translate (" +[d.x, d.y]+")";})
-        
+
     //console.log(d3.event)
 };
 
@@ -145,13 +145,13 @@ SelDot.append("circle")
         {
         cx      : function (d){return d.x;},
         cy      : function (d){return d.y;},
-        r : 13,        
-        class : 'inner' 
+        r : 13,
+        class : 'inner'
     })
     .on("click", function(d,i){
         //
         d3.select(this.parentNode).classed("selected")
-        console.log("Es" +this +"y esta contenido en"+this.parentNode)   
+        console.log("Es" +this +"y esta contenido en"+this.parentNode)
         console.log(!!d3.event.ctrlKey)
     })
 
@@ -195,15 +195,15 @@ SelDot.append("circle")
             d.x = p[0];
             d.width -= move.x;
         } else {
-            d.width = move.x;       
+            d.width = move.x;
         }
         if( move.y < 1 || (move.y*2<d.height)) {
             d.y = p[1];
             d.height -= move.y;
         } else {
-            d.height = move.y;       
+            d.height = move.y;
         }
-       
+
         s.attr( d);
         //console.log( d);
     }

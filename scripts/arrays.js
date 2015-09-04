@@ -19,7 +19,7 @@ function vectore (x0,y0,x1,y1,Width,Height) {
       .attr("refY",10)
       .attr("markerWidth",8)
       .attr("markerHeight", 15)
-      .attr("orient","to")
+      .attr("orient","auto")
       .append("svg:path")
         .attr("d","M0,0L30,10L0,20")
         .style("fill","blue")

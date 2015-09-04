@@ -20,6 +20,8 @@ vectore(0,0,-100,200,width,height);
 vectore(0,0,-100,-200,width,height);
 vectore(-100,200,200,200,width,height);
 
+console.log(d3.select(".board "));
+
 paths = d3.select(".board ")
 .append("svg:g")
 .attr("id", "selmark");
