@@ -1,0 +1,51 @@
+<head>
+        <title>Visual Math</title>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script>
+</head>
+
+<body>
+</body>
+
+<template name="home">
+        <h1> Visual Math </h1>
+        <p> Visual Math is a library for teaching and exploring mathematics visually using WebGL </p>
+
+        <p> Browse the  <a href="/examples/"> examples </a></p>
+
+        <p> View the <a href="/presentation">presentation</a> </p>
+
+</template>
+
+<template name="examples">
+        <h1>Visual Math Examples</h1>
+
+        <h2>Axis</h2>
+        <a href="/examples/first">3d axis with multiple vectors</a>
+        <h2>Vectors</h2>
+        <a href="/examples/second">Vector operations</a>
+</template>
+
+<template name="examples_first">
+        <div id="top">
+        </div>
+</template>
+
+<template name="examples_second">
+        <div id="top" class="secondexample">
+                <div class="textbox">
+                <h3> Vector addition </h3>
+                <p>Select a vector by clicking in its head</p>
+                <p>Move the head of the red vectors with the wasd - qe keys</p>
+                <p> The resulting vector is the blue vector.</p>
+
+                <br>
+                <p> Vector coordinates : </p>
+                <div id ="secveccoord">
+                </div>
+                <div id="veca" class="vectag">a</div>
+                <div id="vecb" class="vectag">b</div>
+        </div>
+                <br>
+        </div>
+</template>
