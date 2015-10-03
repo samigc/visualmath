@@ -22,3 +22,14 @@ First you have to download the repository with the following command
 Then, go to the directory called *three* and run meteor:
 
 ``` meteor ```
+
+The satisfactory output will be 
+
+```
+[[[[[ ~/git/visualmath/three ]]]]]    
+=> Started proxy.                             
+=> Started your app.                          
+
+=> App running at: http://localhost:3000/
+```
+Finally, in your browser go to the server where Meteor is serving, in this case it is *http://localhost:3000/*.
