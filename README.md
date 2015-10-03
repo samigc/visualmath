@@ -7,7 +7,11 @@ To use VisualMath served in your computer you need to [install the latest offici
 
 ``` curl https://install.meteor.com/ | sh ```
 
-Before running Meteor, it is necessary to [install MongoDB] (http://docs.mongodb.org/manual/installation/)
+Before running Meteor, it is necessary to check if MongoDB is installed, writing the following command from the directory *three*
+
+``` mongod ```
+
+If there is an error,  MongoDB runs on most platforms and supports 64-bit architecture for production use and both 64-bit and 32-bit architectures for testing and you can install it from [here] (http://docs.mongodb.org/manual/installation/)
 
 ##Running
 
