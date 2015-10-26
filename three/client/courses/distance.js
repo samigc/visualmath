@@ -152,7 +152,7 @@ Template.courses_distance.rendered = function(){
 
                         var elem= $("#katexfield1")
                         katex.render(  round(gl.v_y2.destination.length()) +"^{2}="+round(gl.v_x.destination.length()) +"^{2}+"+ round(gl.v_y.destination.length())+"^{2}",elem.get(0) )
-                        console.log(gl.v_y.destination.length());
+                        //console.log(gl.v_y.destination.length());
         	}
 
 
