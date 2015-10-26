@@ -11,6 +11,20 @@ Router.route('/presentation', function () {
   this.render('presentation');
 });
 
+// Presentation Route
+Router.route('/slides', function () {
+  this.render('slides');
+});
+
+//Courses
+Router.route('/courses', function () {
+  this.render('courses');
+});
+//Distance Course
+Router.route('/courses/distance', function () {
+  this.render('courses_distance');
+});
+
 //Examples  routes
 Router.route('/examples', function () {
   this.render('examples');

@@ -18,3 +18,22 @@
 	color: #008844;
 	text-shadow: -1px 0 white, 0 1px  white, 1px 0  white, 0 -1px  white;
 }
+
+.coursediv {
+	font-size: 20px;
+	font-family: 'Merriweather', serif;
+	color: #454647;
+	margin: 10px;
+	padding:5px;
+}
+
+.courses_distance {
+	font-family: 'Merriweather', serif;
+}
+
+.axisx {
+	font-size: 30px;
+	color: #338888;
+	position: absolute;
+	font-family:'Merryweather' ,serif;
+}

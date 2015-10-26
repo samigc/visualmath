@@ -1,0 +1,26 @@
+.courses_distance {
+	position: absolute;
+	left : 600px;
+	top: 0px;
+
+}
+
+.courses_distance .eqfield {
+	z-index: -5;
+}
+
+.merry {
+	font-family: 'Merryweather', serif;
+	font-size: 20px;
+    	text-shadow: -2px 0 3px white, 0 2px 3px white, 2px 0 3px white, 0 -2px 3px white;
+	}
+
+.merry.texto {
+	position: absolute;
+	width: 400px;
+	padding: 50px;
+}
+
+.centro {
+	text-align: center;
+}

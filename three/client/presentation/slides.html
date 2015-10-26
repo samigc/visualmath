@@ -1,0 +1,72 @@
+<template name = "slides">
+	<div class="reveal">
+		<div class="slides">
+			<section>GEOMETRY OF VECTORS </section>
+
+			<section data-state='vector2d'>
+				<br>
+				Given a vector in the plane <br>
+				<br>
+				{{#katex}}
+				v= \begin{pmatrix} v_{x}
+				\\ v_{y}  \end{pmatrix}
+				{{else}}
+
+				Warning parsing error
+				{{/katex}}
+
+			 <br> How to know what is its length?
+			</section>
+
+			{{>distance}}
+			{{>linearity}}
+			<section>Distance</section>
+			{{>metrics}}
+			<section>
+				<section>Vertical Slide 1</section>
+			</section>
+
+		</div>
+	</div>
+</template>
+
+<template name="distance">
+	<section data-state="distance">
+		<div id="distance">
+		</div>
+		<div class="textdistance">
+			The norm or distance of the vector is given by
+
+		{{#katex}}
+		 ||v||^{2}=|v_{x}|^{2}+|v_{y}|^{2}
+		{{/katex}}
+
+	</div>
+		<div id ="label_axes">
+		</div>
+		<div id="axisy" class="axisx">y</div>
+		<div id="axisx" class="axisx">x</div>
+	</section>
+</template>
+
+<template name="metrics">
+	<section data-state="metrics">
+	<div id="metrics">
+			<div id ="nextbutton">
+				&#9654;
+			</div>
+			<div id="axisy" class="axis_x">y</div>
+			<div id="axisx" class="axis_x">x</div>
+	</div>
+	</section>
+</template>
+
+<template name="linearity">
+	<section data-state="linearity">
+	<div id="linearity">
+			<div id="katexfield"></div>
+			<div id="axisy" class="axis_x">y</div>
+			<div id="axisx" class="axis_x">x</div>
+	</div>
+	</section>
+</template>

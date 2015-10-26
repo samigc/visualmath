@@ -38,7 +38,11 @@ This function is intended for its use in render loops-
 
 */
 
-VM.keyControls = function(v3,vstep){
+VM.keyControls = function(v3,vstep,options){
+
+        this.options = options || {};
+        this.z = options.z || false;
+
         var npos = VM.V3();
         vstep = vstep || 0.1
         npos.copy(v3);
@@ -54,11 +58,14 @@ VM.keyControls = function(v3,vstep){
         if(VM.keyboard.pressed("w")){
                 npos.y +=vstep;
         }
+
+        if(! this.z){
         if(VM.keyboard.pressed("q")){
                 npos.z +=vstep;
         }
         if(VM.keyboard.pressed("e")){
                 npos.z -=vstep;
+        }
         }
         return npos;
 }
@@ -197,7 +204,9 @@ VM.Vector = function(destination , origin , options){
   this.vectorLen = destination.length();
   this.direction = destination.normalize();
   this.options = options || {};
-  this.vectorColor = this.options.color || new THREE.Color(Math.random(),Math.random(), Math.random());
+  this.vectorColor = this.options.color || new THREE.Color(Please.make_color({
+          saturation : 1
+  }));
   this.vectorObject = new THREE.ArrowHelper( this.direction , this.origin , this.vectorLen , this.vectorColor , this.vectorLen / 10, this.vectorLen / 20 );
   this.add(this.vectorObject);
   destination.copy(this.destination);
@@ -252,5 +261,132 @@ translates the vector origin to a new position.
 */
 
 VM.Vector.prototype.translateTo = function(vec3){
+        this.midpt = VM.V3();
+        this.midpt.copy(this.vectorObject.position);
+        this.midpt.subVectors(this.vectorObject.position,vec3);
+        this.midpt.multiplyScalar(0.5);
+        this.midpt.add(vec3);
         this.vectorObject.position.copy(vec3);
+
+        if(this.vectorObject.midpt){
+        this.vectorObject.midpt = new VM.V3();
+        this.vectorObject.midpt.copy(this.midpt);
+        this.cube.position.add(this.midpt);
+
+        var position        = THREEx.ObjCoord.cssPosition(this.cube, camera,renderer);
+
+        var element  = $("#"+this.options.id);
+
+        posleft = position.x;
+        poshei = position.y;
+        $("#"+this.options.id).css({left : posleft  , top : poshei });
+
+        }
+
 }
+
+/*
+
+VM.Vector.activateTag("tag",options)
+
+Activates the tag of a vector , the tag is a vector name that chases the vector.
+After activating the tag every frame it must be updated-
+*/
+
+
+VM.Vector.prototype.activateTag = function(tag, options){
+
+        this.tag = tag || "x";
+        this.options = options || {};
+        var op = this.options;
+
+        op.id = options.id || "vectortag"
+        op.jQueryContainer = options.jQueryContainer || $("body");
+        op.class = options.class || "eqfield";
+        op.left = options.left || 0;
+        op.top = options.top || 0;
+        op.katex = options.katex || false;
+        op.fontSize = options.fontSize || 50;
+
+        this.midpt = new VM.V3();
+        var bkdest = VM.V3().copy(this.destination);
+        this.midpt.subVectors(this.destination,this.origin);
+        this.destination.copy(bkdest);
+        this.midpt.multiplyScalar(0.4);
+
+        var geometry = new THREE.BoxGeometry( 0.01, 0.01, 0.01 );
+        var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
+        this.cube = new THREE.Mesh( geometry, material );
+        this.cubeor = new THREE.Mesh(geometry,material);
+        this.add(this.cubeor);
+        this.add( this.cube );
+        this.cube.position.copy(this.midpt);
+
+        //Crear etiqueta html
+        var element = $('<div/>');
+        if(katex){
+                element.html(katex.renderToString(tag))
+        }
+        else {
+                element.append(tag);
+        }
+        element.attr({"id": op.id});
+        element.css({'font-size' : op.fontSize+'px'});
+        element.addClass(op.class);
+        element.css({position : "absolute"});
+        col = this.vectorColor;
+        element.css({color : "rgb("+Math.round(col.r * 250) + " , "+Math.round(col.g * 250)+", "+Math.round(col.b * 250)+")"})
+
+
+        op.jQueryContainer.append(element);
+}
+
+
+/*
+
+This method is necesary to update the tags everyframe.
+
+*/
+VM.Vector.prototype.updateTag = function(camera, renderer){
+
+        //Position of the midcube
+        this.midpt.subVectors(this.destination,this.origin);
+        this.midpt.multiplyScalar(0.4);
+        this.cube.position.copy(this.midpt);
+        var position        = THREEx.ObjCoord.cssPosition(this.cube, camera,renderer);
+
+        var element  = $("#"+this.options.id);
+        posleft = position.x;
+        poshei = position.y;
+        posleft += this.options.left;
+        poshei += this.options.top;
+        $("#"+this.options.id).css({left : posleft   , top : poshei });
+        //console.log(this.cube.position.y);
+        //Con la ecuacion de la recta.
+        //Obtener origen  y final para calcular pendiente
+        var posorg = THREEx.ObjCoord.cssPosition(this.cubeor,camera,renderer)
+        var posfin = THREEx.ObjCoord.cssPosition(this.cone,camera,renderer)
+        rot = (Math.atan2((posfin.y-posorg.y),(posfin.x-posorg.x)))* (180/Math.PI) ;
+
+        if(rot < 0) {rot = rot + 360}
+
+        if(rot > 180){
+                if(rot < 360){
+                        rot = rot - 180
+                }
+        }
+
+        if(rot > 90){
+                if(rot < 180){
+                        rot = rot - 180
+                }
+        }
+
+        //console.log(rot);
+        $("#"+this.options.id).css({ transform : "rotate("+rot+"deg)"})
+}
+
+
+//Latex tags and tag animations.
+
+// VM.Tag

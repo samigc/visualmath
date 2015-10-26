@@ -1,0 +1,62 @@
+<template name="courses_distance" >
+	<div class="merry texto">
+		<br>
+		<br>
+		<br>
+		In the plane every vector
+		{{#katex}}
+		v
+		{{/katex}}
+		can be represented by a duple
+		<br>
+		<br>
+		<div class="centro">
+			{{#katex}}
+			v=\begin {pmatrix}
+			v_{x}\\
+			v_{y}
+			\end{pmatrix}
+			{{/katex}}
+		</div>
+		<br>
+		<br>
+
+		where
+
+		{{#katex}}
+		v_{x} {{/katex}} and {{#katex}} v_{y}
+		{{/katex}}
+		are the coordinate in the x-axis and y-axis respectively
+		<br>
+		<br>
+		Its measure or norm {{#katex}} 		||v||		{{/katex}} can be calculated easily using Pythagorean theorem
+		<br>
+		<br>
+
+		<div class="centro">
+			{{#katex}}
+			||v||^{2}=|v_{x}|^2+|v_{y}|^2
+			{{/katex}}
+		</div>
+		<br>
+		<br>
+		You could check that modifying the vector shown in the graph with ad-sw keys.
+		<br>
+		<br>
+
+		 <div id="katexfield1" class="centro"> </div>
+
+
+
+
+	</div>
+	<div class="courses_distance">
+		<h1>Can we measure everywhere?</h1>
+	</div>
+
+	<div id ="label_axes">
+	</div>
+	<div id="axisy" class="axisx">y</div>
+	<div id="axisx" class="axisx">x</div>
+
+</template>

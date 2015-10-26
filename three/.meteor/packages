@@ -9,3 +9,4 @@ autopublish
 insecure
 neo:reveal-js
 iron:router
+simple:katex

@@ -13,6 +13,59 @@ function CreatePresentation(){
 	}
 }
 
+
+Template.presentationmetrica.rendered = function(){
+	console.log("Metrica was rendered.");
+	//CreatePresentation(); //Carefull
+	var gl;
+	// Step for animation
+	var step = 0;
+	//Resize event listener
+	window.addEventListener( 'resize', drawWindow, false );
+	console.log(VM.Storage);
+	//Storage space Initialization
+	if(VM.Storage.presentation.metrica){
+		//Recover from detached context
+		console.log("Recovering from lost context")
+		gl = VM.Storage.presentation.metrica;
+	}
+	else {
+		//Initialize all inside the storage
+		console.log("Starting metrica")
+		VM.Storage.presentation.metrica = {}
+		gl = VM.Storage.presentation.metrica;
+	}
+
+	//init(gl);
+	//animate();
+
+
+	function drawWindow(){
+		if(gl.renderer){
+			gl.container = $("#canvasholder");
+			gl.WIDTH = gl.container.width() + 400;
+			gl.HEIGHT = gl.container.height() +400;
+			gl.ASPECT = gl.WIDTH / gl.HEIGHT;
+			gl.camera.aspect = gl.ASPECT;
+			gl.camera.updateProjectionMatrix();
+			gl.renderer.setSize( gl.WIDTH, gl.HEIGHT );
+			gl.renderer.render(gl.scene,gl.camera);
+			console.log(gl);
+
+			var container = $('.subtxt');
+			container.hide();
+			container.css("text-shadow","-3px 0 20px #33bb88, 0 3px 20px  #33bb88, 3px 0 20px  #33bb88, 0 -3px 20px  #33bb88");
+			container.show();
+		}
+	}
+
+	Reveal.addEventListener( 'metrica', function( event ) {
+		// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+		console.log("Metrica is initialized here cast ?")
+		drawWindow();
+	} );
+}
+
 //Three background for the initial presentation
 
 Template.introbackground.rendered = function(){

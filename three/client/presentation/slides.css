@@ -1,0 +1,43 @@
+.axis_x {
+	font-size: 20px !important;
+	color: #338888;
+	position: absolute;
+	font-family:'Merryweather' ,serif;
+}
+
+#metrics {
+	height: 700px ;
+	width: 960px ;
+}
+
+#linearity {
+	height: 700px ;
+	width: 960px ;
+}
+
+#distance {
+	height: 700px ;
+	width: 960px ;
+}
+
+.textdistance {
+	position: fixed;
+	top: 0px;
+	right: 800px;
+}
+
+#katexfield {
+	position: absolute;
+	opacity: 0;
+	font-size: 40 !important;
+	color: #444;
+    	text-shadow: -2px 0 2px white, 0 2px 2px white, 2px 0 2px white, 0 -2px 2px white;
+}
+
+.eqfield {
+	font-family: 'Merryweather', serif;
+	color: #444;
+    	text-shadow: -2px 0 3px white, 0 2px 3px white, 2px 0 3px white, 0 -2px 3px white;
+	font-style: italic !important;
+	font-weight: bold;
+}
