@@ -1,6 +1,9 @@
 <template name="courses_addition">
   <div class="merry texto">
-    The addition of two vectors
+    The sum of vectors {{#katex}}u{{/katex}} and {{#katex}}v{{/katex}} can be seen like the vector resulting of traslating one vector origin
+    to the other vector destination, creating a single path .   <br>
+    <br>
+    If
     {{#katex}}
     u=\begin{pmatrix}
     u_{x}\\
@@ -12,9 +15,10 @@
     v_{x}\\
     v_{y}\\
     v_{z}
-    \end{pmatrix}{{/katex}}
-    is given by <br>
-
+    \end{pmatrix}{{/katex}} <br>
+<br>
+   then their sum is given by <br>
+<br>
     <div class="centro">
 
     {{#katex}}
@@ -26,6 +30,11 @@
     </div>
     <br>
     <br>
+
+    <div id="katexfield3" class="centro">    </div>
+
+    <br>
+
   </div>
     <div class="courses_distance">
       <h1>Looking for the sum?</h1>

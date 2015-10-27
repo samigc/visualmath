@@ -205,6 +205,8 @@ Template.courses_addition.rendered = function() {
                   gl.vector.geom[2].UpdateTarget(VM.V3().addVectors(gl.vector.geom[0].destination,gl.vector.geom[1].destination));
           }
 
+          var elem=$("#katexfield3")
+          katex.render("\\begin{pmatrix} \\end{pmatrix}" VM.Round())
 
   }
 
