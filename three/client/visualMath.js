@@ -5,6 +5,12 @@ VM = {};
 //VM Storage
 VM.Storage = {};
 
+//function to round to 2 decimals
+
+VM.Round = function(num) {
+  return + (Math.round(num +"e+2")+"e-2") ;
+}
+
 //Wrapper for threejs vector3
 VM.V3 = function(x,y,z){
         x = x || 0;
@@ -41,7 +47,7 @@ This function is intended for its use in render loops-
 VM.keyControls = function(v3,vstep,options){
 
         this.options = options || {};
-        this.z = options.z || false;
+        this.z = this.options.z || false;
 
         var npos = VM.V3();
         vstep = vstep || 0.1

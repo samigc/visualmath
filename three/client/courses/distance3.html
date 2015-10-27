@@ -1,0 +1,45 @@
+<template name="courses_distance3">
+
+  <div class="merry texto">
+    In the space, every vector {{#katex}}v{{/katex}} can be expressed as
+    <div class="centro">
+        {{#katex}}v=
+        \begin{pmatrix}
+        v_{x}\\
+        v_{y}\\
+        v_{z}
+        \end{pmatrix}
+        {{/katex}}
+        </div>
+
+        <div>
+        where:
+        <ul>
+          <li>{{#katex}}v_{x}{{/katex}} is the coordinate in the axis x</li>
+          <li>{{#katex}}v_{y}{{/katex}} is the coordinate in the axis y</li>
+          <li>{{#katex}}v_{z}{{/katex}} is the coordinate in the axis z</li>
+        </ul>
+        The length or norm of vector {{#katex}}v{{/katex}} is calculated compounding
+        the result of the Pythagorean Theorem, and it is <br>
+        <br>
+        <div class="centro">
+        {{#katex}}||v||^2=|v_{x}|^2+|v_{y}|^2+|v_{z}|^2{{/katex}}
+        </div>
+        <br>
+        <br>
+        <div id="katexfield2" class="centro"> </div>
+        <br><br>
+        <div class="infosquare">
+        Use the <span class="let">A</span><span class="let">S</span><span class="let">W</span><span class="let">D</span><span class="let">Q</span><span class="let">E</span> keys to modify the vector
+        <br><br>
+        Use the mouse left button to move the camera, right button to pan the camera  and mouse wheel to zoom.
+        </div>
+
+    </div>
+  </div>
+
+  <div class="courses_distance">
+    <h1> How to measure in the space </h1>
+  </div>
+
+</template>

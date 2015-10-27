@@ -5,13 +5,9 @@
 
 }
 
-.courses_distance .eqfield {
-	z-index: -5;
-}
-
 .merry {
 	font-family: 'Merryweather', serif;
-	font-size: 20px;
+	font-size: 17px;
     	text-shadow: -2px 0 3px white, 0 2px 3px white, 2px 0 3px white, 0 -2px 3px white;
 	}
 
@@ -19,6 +15,7 @@
 	position: absolute;
 	width: 400px;
 	padding: 50px;
+	text-align: justify;
 }
 
 .centro {
@@ -31,7 +28,7 @@
 	border: solid;
 	border-radius: 10px;
 	border-color: #bbab88;
-	font-size: 22px;
+	font-size: 18px;
 	color : #444444;
 	text-align: justify;
 }

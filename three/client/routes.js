@@ -25,6 +25,21 @@ Router.route('/courses/distance', function () {
   this.render('courses_distance');
 });
 
+//Distance in the space course
+Router.route('/courses/distance3', function () {
+  this.render('courses_distance3');
+});
+
+//Addition of vectors
+Router.route('/courses/addition', function () {
+  this.render('courses_addition');
+});
+
+//linearity
+Router.route('/courses/linearity', function () {
+  this.render('courses_linearity');
+});
+
 //Examples  routes
 Router.route('/examples', function () {
   this.render('examples');

@@ -1,0 +1,52 @@
+<template name="courses_linearity">
+  <div class="merry texto">
+    <br>
+    In the space every vector {{#katex}}v=\begin{pmatrix}
+    v_{x}\\
+    v_{y}\\
+    v_{z}
+    \end{pmatrix} {{/katex}} can be seen as
+    <br>
+{{#katex}}
+    v=v_{x}\begin{pmatrix}
+    1\\
+    0\\
+    0
+    \end{pmatrix}
+    +
+    v_{y}
+    \begin{pmatrix}
+    0\\
+    1\\
+    0
+    \end{pmatrix}
+    +v_{z}
+    \begin{pmatrix}
+    0\\
+    0\\
+    1
+    \end{pmatrix}
+    {{/katex}}
+    <br>
+    <br>
+    Equivalent to
+    <br>
+    <br>
+    {{#katex}}
+    v=
+    \begin{pmatrix}
+    v_{x} & v_{y} & v_{z}
+    \end{pmatrix}
+    \begin{pmatrix}
+    1&0&0\\
+    0&1&0\\
+    0&0&1
+    \end{pmatrix}
+
+{{/katex}}
+
+  </div>
+    <div class="courses_linearity">
+      <h1>What is linearity?</h1>
+    </div>
+</template>
