@@ -267,28 +267,8 @@ translates the vector origin to a new position.
 */
 
 VM.Vector.prototype.translateTo = function(vec3){
-        this.midpt = VM.V3();
-        this.midpt.copy(this.vectorObject.position);
-        this.midpt.subVectors(this.vectorObject.position,vec3);
-        this.midpt.multiplyScalar(0.5);
-        this.midpt.add(vec3);
         this.vectorObject.position.copy(vec3);
-
-        if(this.vectorObject.midpt){
-        this.vectorObject.midpt = new VM.V3();
-        this.vectorObject.midpt.copy(this.midpt);
-        this.cube.position.add(this.midpt);
-
-        var position        = THREEx.ObjCoord.cssPosition(this.cube, camera,renderer);
-
-        var element  = $("#"+this.options.id);
-
-        posleft = position.x;
-        poshei = position.y;
-        $("#"+this.options.id).css({left : posleft  , top : poshei });
-
-        }
-
+        this.translation = VM.V3().copy(vec3);
 }
 
 /*
@@ -298,7 +278,6 @@ VM.Vector.activateTag("tag",options)
 Activates the tag of a vector , the tag is a vector name that chases the vector.
 After activating the tag every frame it must be updated-
 */
-
 
 VM.Vector.prototype.activateTag = function(tag, options){
 
@@ -355,10 +334,16 @@ This method is necesary to update the tags everyframe.
 */
 VM.Vector.prototype.updateTag = function(camera, renderer){
 
+
+        var trcube = VM.V3();
+        if(this.translation){
+                trcube.copy(this.translation);
+        }
+
         //Position of the midcube
         this.midpt.subVectors(this.destination,this.origin);
         this.midpt.multiplyScalar(0.4);
-        this.cube.position.copy(this.midpt);
+        this.cube.position.addVectors(this.midpt,trcube);
         var position        = THREEx.ObjCoord.cssPosition(this.cube, camera,renderer);
 
         var element  = $("#"+this.options.id);

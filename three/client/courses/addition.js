@@ -102,25 +102,61 @@ Template.courses_addition.rendered = function() {
 
                   for (var i = 0; i < gl.vector.geom.length; i++) {
                           var vborn = new VM.V3().copy(gl.vector.v3[i]);
-                          gl.vector.geom[i] = new VM.Vector(vborn.multiplyScalar(0.1));
-                          gl.vector.geom[i].setColor(0x0099ff)
+                          gl.vector.geom[i] = new VM.Vector(vborn);
+                          gl.vector.geom[i].setColor(0x0099ff);
                           gl.scene.add(gl.vector.geom[i]);
                   }
+                  //Render the scene in the current Page
+                  gl.container = $('.courses_distance');
+                  gl.vector.geom[0].activateTag("u",{top : 50 , fontSize : 35 , jQueryContainer : gl.container , katex:true , id : "vectoru"});
+                   gl.vector.geom[1].activateTag("v",{top : 50 , fontSize : 35 , jQueryContainer : gl.container , katex:true , id : "vectorv"});
+                    gl.vector.geom[2].activateTag("u + v",{top : 50 ,fontSize : 35 , jQueryContainer : gl.container , katex:true , id : "vectorvu"});
+                     $("#vectoru").css('opacity',0);
+                     $("#vectorv").css('opacity',0);
+                     $("#vectorvu").css('opacity',0);
+
                   gl.vector.geom[2].setColor(0x003d99);
                   //Translate the second vector to the head of the first
                   gl.vector.geom[1].translateTo(gl.vector.v3[0]);
-
-                  var scalar = {t:0};
-                  var v1scale = new TWEEN.Tween(scalar)
+                  for (var i = 0; i < gl.vector.geom.length; i++) {
+                          var vdir = VM.V3().copy(gl.vector.geom[i].destination);
+                          vdir.multiplyScalar(0.001)
+                          gl.vector.geom[i].UpdateTarget(vdir);
+                  }
+                  var v1scale = new TWEEN.Tween({t:0.001})
                   .to({t:1}, 2000).onUpdate(
                     function() {
                       var vborn = new VM.V3().copy(gl.vector.v3[0]);
-                      console.log(this.t);
-                      gl.vector.geom[0].UpdateTarget(vborn.multiplyScalar(this.t));
+                      vborn.multiplyScalar(this.t)
+                      gl.vector.geom[0].UpdateTarget(vborn);
+                      $("#vectoru").css('opacity',this.t);
                     }
                   )
                   .start();
 
+                  var v2scale = new TWEEN.Tween({t:0.001})
+                  .to({t:1}, 2000).onUpdate(
+                    function() {
+                      var vborn = new VM.V3().copy(gl.vector.v3[1]);
+                      vborn.multiplyScalar(this.t)
+                      gl.vector.geom[1].UpdateTarget(vborn);
+                       $("#vectorv").css('opacity',this.t);
+                    }
+                  )
+                  .delay(2000)
+                  .start();
+
+                  var v3scale = new TWEEN.Tween({t:0.001})
+                  .to({t:1}, 2000).onUpdate(
+                    function() {
+                      var vborn = new VM.V3().copy(gl.vector.v3[2]);
+                      vborn.multiplyScalar(this.t)
+                      gl.vector.geom[2].UpdateTarget(vborn);
+                       $("#vectorvu").css('opacity',this.t);
+                    }
+                  )
+                  .delay(4000)
+                  .start();
 
           }
 
@@ -138,8 +174,7 @@ Template.courses_addition.rendered = function() {
                   gl.activevector = gl.vector.geom[0];
           },false);
 
-          //Render the scene in the current Page
-          gl.container = $('.courses_distance');
+
 
           //katex.render("c = \\pm\\sqrt{a^2 + b^2}", gl.container[0]);
           //There seems to be no problem with appending the canvas again since the object reference is the same.
@@ -151,6 +186,9 @@ Template.courses_addition.rendered = function() {
           step +=0.01;
 
           TWEEN.update();
+          for (var i = 0; i < gl.vector.geom.length; i++) {
+                  gl.vector.geom[i].updateTag(gl.camera,gl.renderer);
+          }
 
           gl.controls.update();
           requestAnimationFrame(renderView);
@@ -159,29 +197,14 @@ Template.courses_addition.rendered = function() {
           gl.axes[2].lookAt(gl.camera);
           gl.renderer.render(gl.scene,gl.camera);
           gl.camera.lookAt(gl.scene.position)
+
           if(gl.activevector){
-                  var up = VM.keyControls(gl.activevector.destination);
-                  gl.activevector.UpdateTarget(up);
+                  var cont = VM.keyControls(gl.activevector.destination);
+                  gl.activevector.UpdateTarget(cont);
+                  gl.vector.geom[1].translateTo(gl.vector.geom[0].destination);
+                  gl.vector.geom[2].UpdateTarget(VM.V3().addVectors(gl.vector.geom[0].destination,gl.vector.geom[1].destination));
           }
-          //Retrieve vector heads
-          gl.vector.v3[0].copy(gl.vector.geom[0].destination);
-          gl.vector.v3[1].copy(gl.vector.geom[1].destination);
-          gl.vector.v3[2].addVectors(gl.vector.v3[0],gl.vector.v3[1]);
-          gl.vector.geom[2].UpdateTarget(gl.vector.v3[2]);
-          //Translate vector to head
-          gl.vector.geom[1].translateTo(gl.vector.v3[0]);
 
-          //Print coordinates
-          gl.coordstr  = "A : " + VM.V3String(gl.vector.v3[0]) + " + <br>B : " +VM.V3String(gl.vector.v3[1])  + " <br>= C : "  + VM.V3String(gl.vector.v3[2]) ;
-          $("#secveccoord").html(gl.coordstr);
-
-          //Update vector tags
-          var position = THREEx.ObjCoord.cssPosition(gl.vector.geom[0].cone , gl.camera , gl.renderer);
-          $("#veca").css('left',(position.x-$("#veca").width() /2)+'px');
-          $("#veca").css('top',(position.y-$("#veca").height() /2)+'px');
-          var position = THREEx.ObjCoord.cssPosition(gl.vector.geom[1].cone , gl.camera , gl.renderer);
-          $("#vecb").css('left',(position.x-$("#vecb").width() /2)+'px');
-          $("#vecb").css('top',(position.y-$("#vecb").height() /2)+'px');
 
   }
 
