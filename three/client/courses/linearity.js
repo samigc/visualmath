@@ -218,14 +218,14 @@ for (var i = 0; i < gl.base.geom.length; i++) {
     gl.camera.lookAt(gl.scene.position);
 
     var up= VM.keyControls(gl.vector.geom[3].destination,0.1);
-    
-    gl.vector.geom[1].translateTo(gl.vector.geom[0].destination);
-    gl.vector.geom[2].translateTo(VM.V3().addVectors(gl.vector.geom[1].destination, gl.vector.geom[1].translation));
 
+    var right= gl.vector.geom[1].translateTo(gl.vector.geom[0].destination);
+    var left= gl.vector.geom[2].translateTo(VM.V3().addVectors(gl.vector.geom[1].destination, gl.vector.geom[1].translation));
+    console.log(gl.vector.geom[3].destination);
     gl.vector.geom[3].UpdateTarget(up);
-    gl.vector.geom[0].UpdateTarget(ejex);
-    gl.vector.geom[1].UpdateTarget(ejey);
-    gl.vector.geom[2].UpdateTarget(ejez);
+    gl.vector.geom[0].UpdateTarget(gl.vector.geom[0].destination.x,0,0);
+    gl.vector.geom[1].UpdateTarget(0,gl.vector.geom[0].destination.y,0);
+    gl.vector.geom[2].UpdateTarget(gl.vector.geom[0].destination.z,0,0);
 
   }
 
