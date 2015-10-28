@@ -18,6 +18,7 @@ Template.courses_addition.rendered = function() {
   }
 
   if(VM.Storage.firstexample){
+          location.reload();
           //Recover from detached context
           console.log("Recovering from lost context")
           gl = VM.Storage.secondexample;
@@ -175,8 +176,6 @@ Template.courses_addition.rendered = function() {
           },false);
 
 
-
-          //katex.render("c = \\pm\\sqrt{a^2 + b^2}", gl.container[0]);
           //There seems to be no problem with appending the canvas again since the object reference is the same.
           gl.container.append(gl.renderer.domElement);
           drawWindow();
@@ -196,22 +195,37 @@ Template.courses_addition.rendered = function() {
           gl.axes[1].lookAt(gl.camera);
           gl.axes[2].lookAt(gl.camera);
           gl.renderer.render(gl.scene,gl.camera);
-          gl.camera.lookAt(gl.scene.position)
+          gl.camera.lookAt(gl.scene.position);
 
           if(gl.activevector){
                   var cont = VM.keyControls(gl.activevector.destination);
                   gl.activevector.UpdateTarget(cont);
                   gl.vector.geom[1].translateTo(gl.vector.geom[0].destination);
                   gl.vector.geom[2].UpdateTarget(VM.V3().addVectors(gl.vector.geom[0].destination,gl.vector.geom[1].destination));
-          }
-
+                  console.log(gl.activevector.destination);
+          };
+        /*  console.log("\\begin{pmatrix}"+
+          VM.Round(gl.vector.v3[0].x) +"\\\\"+
+           VM.Round(gl.vector.v3[0].y) +"\\\\"+
+            VM.Round(gl.vector.v3[0].z)+"\\end{pmatrix} + \\begin{pmatrix}"+
+            VM.Round(gl.vector.v3[1].x) +"\\\\"+
+             VM.Round(gl.vector.v3[1].y) +"\\\\"+
+              VM.Round(gl.vector.v3[1].z)+ "\\end{pmatrix} =\\begin{pmatrix}"+
+              VM.Round(gl.vector.v3[2].x) +"\\\\"+
+               VM.Round(gl.vector.v3[2].y) +"\\\\"+
+                VM.Round(gl.vector.v3[2].z)+"\\end{pmatrix}")*/
           var elem=$("#katexfield3")
-          katex.render("\\begin{pmatrix} \\end{pmatrix}" VM.Round())
+          katex.render("\\begin{pmatrix}"+
+          VM.Round(gl.vector.geom[0].destination.x) +"\\\\"+
+           VM.Round(gl.vector.geom[0].destination.y) +"\\\\"+
+            VM.Round(gl.vector.geom[0].destination.z)+"\\end{pmatrix} + \\begin{pmatrix}"+
+            VM.Round(gl.vector.geom[1].destination.x) +"\\\\"+
+             VM.Round(gl.vector.geom[1].destination.y) +"\\\\"+
+              VM.Round(gl.vector.geom[1].destination.z)+ "\\end{pmatrix} =\\begin{pmatrix}"+
+              VM.Round(gl.vector.geom[2].destination.x) +"\\\\"+
+               VM.Round(gl.vector.geom[2].destination.y) +"\\\\"+
+                VM.Round(gl.vector.geom[2].destination.z)+"\\end{pmatrix}",elem.get(0));
 
   }
-
-
-
-
 
 }

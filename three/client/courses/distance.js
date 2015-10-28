@@ -20,6 +20,7 @@ Template.courses_distance.rendered = function(){
 
 
   if(VM.Storage.distance){
+    location.reload();
     //Recover from detached context
     console.log("Recovering from lost context")
     VM.Storage.distance = {}
