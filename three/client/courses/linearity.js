@@ -63,9 +63,9 @@ Template.courses_linearity.rendered = function() {
       gl.scene.add(gl.grid);
 
       //Initial camera position
-      gl.camera.position.x = 17;
-      gl.camera.position.y = 12;
-      gl.camera.position.z = 8;
+      gl.camera.position.x = 17.56;
+      gl.camera.position.y = 5.2;
+      gl.camera.position.z = 6.7;
       gl.camera.lookAt(gl.scene.position);
 
       //Controls (?move to VM)
@@ -78,6 +78,7 @@ Template.courses_linearity.rendered = function() {
       gl.controls.noPan = false;
       gl.controls.staticMoving = true;
       gl.controls.dynamicDampingFactor = 0.3;
+      gl.controls.target = VM.V3( 0.53, -7.25, -1.31);
 
       ticks = [-10,-8,-6,-4,-2,2,4,6,8,10];
       gl.axes = new Array(3);
@@ -112,7 +113,6 @@ for (var i = 0; i < gl.base.geom.length; i++) {
       gl.vector.v3[0] = VM.V3(gl.vector.v3[3].x,0,0);
       gl.vector.v3[1] = VM.V3(0,gl.vector.v3[3].y,0);
       gl.vector.v3[2] = VM.V3(0,0,gl.vector.v3[3].z);
-      gl.activevector = undefined;
 
       for (var i = 0; i < gl.vector.geom.length; i++) {
               var vborn = new VM.V3().copy(gl.vector.v3[i]);
@@ -187,7 +187,7 @@ for (var i = 0; i < gl.base.geom.length; i++) {
              var vborn = new VM.V3().copy(gl.vector.v3[3]);
              vborn.multiplyScalar(this.t)
              gl.vector.geom[3].UpdateTarget(vborn);
-             $("#vectorvz").css('opacity',this.t);
+             $("#vectorv").css('opacity',this.t);
            }
          )
          .delay(6000)
@@ -201,6 +201,7 @@ for (var i = 0; i < gl.base.geom.length; i++) {
 
   function renderView() {
     step += 0.01;
+    gl.controls.update();
 
     TWEEN.update();
 
@@ -215,6 +216,16 @@ for (var i = 0; i < gl.base.geom.length; i++) {
     gl.axes[2].lookAt(gl.camera);
     gl.renderer.render(gl.scene,gl.camera);
     gl.camera.lookAt(gl.scene.position);
+
+    var up= VM.keyControls(gl.vector.geom[3].destination,0.1);
+    var ejex = new VM.V3(up.x,0,0);
+    var ejey = new VM.V3(0,up.y,0);
+    var ejez = new VM.V3(0,0,up.z);
+
+    gl.vector.geom[3].UpdateTarget(up);
+    gl.vector.geom[0].UpdateTarget(ejex);
+    gl.vector.geom[1].UpdateTarget(ejey);
+    gl.vector.geom[2].UpdateTarget(ejez);
 
   }
 
