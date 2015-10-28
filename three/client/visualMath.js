@@ -109,7 +109,7 @@ VM.Axis = function(ticks, options ) {
   this.ticks = ticks || [];
   this.options = options || {};
 
-  this.textSize = this.options.textSize || 0.5;
+  this.textSize = this.options.textSize || 0.25;
   this.textHeight = this.options.textHeight || 0;
   this.font =  this.options.font || "aller";
   this.lineColor = this.options.lineColor || 0x333333;
@@ -143,7 +143,7 @@ VM.Axis = function(ticks, options ) {
     tickgeoms[i].center()
     this.ticktexts[i] = new THREE.Mesh(tickgeoms[i], textmaterial);
     this.ticktexts[i].position.x = this.ticks[i];
-    this.ticktexts[i].position.y = -1*this.textSize -1;
+    this.ticktexts[i].position.y = -1*this.textSize-0.2 ;
     this.ticktexts[i].position.z = 0;
     this.add(this.ticktexts[i]);
   }
@@ -293,6 +293,7 @@ VM.Vector.prototype.activateTag = function(tag, options){
         op.top = options.top || 0;
         op.katex = options.katex || false;
         op.fontSize = options.fontSize || 50;
+        op.color= options.color ||"rgb("+Math.round(col.r * 250) + " , "+Math.round(col.g * 250)+", "+Math.round(col.b * 250)+")";
 
         this.midpt = new VM.V3();
         var bkdest = VM.V3().copy(this.destination);
@@ -321,7 +322,7 @@ VM.Vector.prototype.activateTag = function(tag, options){
         element.addClass(op.class);
         element.css({position : "absolute"});
         col = this.vectorColor;
-        element.css({color : "rgb("+Math.round(col.r * 250) + " , "+Math.round(col.g * 250)+", "+Math.round(col.b * 250)+")"})
+        element.css({color : op.color});
 
 
         op.jQueryContainer.append(element);

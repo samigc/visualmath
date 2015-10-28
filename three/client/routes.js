@@ -40,6 +40,11 @@ Router.route('/courses/linearity', function () {
   this.render('courses_linearity');
 });
 
+//matrix transformation
+Router.route('/courses/matrix', function () {
+  this.render('courses_matrix');
+});
+
 //Examples  routes
 Router.route('/examples', function () {
   this.render('examples');
