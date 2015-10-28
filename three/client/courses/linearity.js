@@ -218,7 +218,7 @@ for (var i = 0; i < gl.base.geom.length; i++) {
     gl.camera.lookAt(gl.scene.position);
 
     var up= VM.keyControls(gl.vector.geom[3].destination,0.1);
-    var ejex = new VM.V3(up.x,0,0);
+    
     gl.vector.geom[1].translateTo(gl.vector.geom[0].destination);
     gl.vector.geom[2].translateTo(VM.V3().addVectors(gl.vector.geom[1].destination, gl.vector.geom[1].translation));
 
