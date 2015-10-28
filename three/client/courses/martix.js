@@ -148,13 +148,19 @@ Template.addform.events({
 
                  a11=event.target.a11.value;
                  a12=event.target.a12.value;
+                 a13=event.target.a13.value;
                  a21=event.target.a21.value;
                  a22=event.target.a22.value;
+                 a23=event.target.a23.value;
+                 a31=event.target.a31.value;
+                 a32=event.target.a32.value;
+                 a33=event.target.a23.value;
 
                                          elem=$("#katexfield5")
                                          katex.render("\\begin{pmatrix} "+
-                                         a11+"&"+a12 +"\\\\"+
-                                         a21+"&"+a22 +
+                                         a11+"&"+a12 +"&"+a13 +"\\\\"+
+                                         a21+"&"+a22 +"&"+a23 +"\\\\"+
+                                         a31+"&"+a32 +"&"+a33 +
                                           "\\end{pmatrix}",elem.get(0));
 
                 return false;

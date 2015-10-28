@@ -4,12 +4,34 @@
 
 		A matrix is a list of arrays that describes a linear transformation in the space.
 		<br>
-		To apply the transformation {{#katex}}A{{/katex}} to a vector, it just simply takes the multiplication
+		To apply the transformation
 		<br>
-		{{#katex}}A x= {{/katex}}
+		<br>
+		{{#katex}}A=\begin{pmatrix}a_{11} & a_{12} & a_{13}\\
+		a_{21} & a_{22} & a_{23}\\
+		a_{31} & a_{32} & a_{33}
+		\end{pmatrix}{{/katex}}
+		 to a vector {{#katex}}v=\begin{pmatrix} v_{x}\\ v_{y} \\ v_{z} \end{pmatrix}{{/katex}},<br> <br>
+		we simply mupltiply
+		<br>
+		<br>
+		 {{#katex}}A v= \begin{pmatrix}a_{11} & a_{12} & a_{13}\\
+		a_{21} & a_{22} & a_{23}\\
+		a_{31} & a_{32} & a_{33}
+		\end{pmatrix} \begin{pmatrix} v_{x}\\ v_{y} \\ v_{z} \end{pmatrix} {{/katex}}
+		<br>
+		<br>
+		In order to know how the transformation proceed, we can inspect how the basis is transformated
+		<br>
+		<br>
+		{{#katex}}A \begin{pmatrix} 1\\ 0 \\ 0 \end{pmatrix}= \begin{pmatrix}a_{11} \\ a_{21} \\ a_{31} \end{pmatrix}{{/katex}} ,
+		{{#katex}}A \begin{pmatrix} 0\\ 1 \\ 0 \end{pmatrix}= \begin{pmatrix}a_{12} \\ a_{22} \\ a_{32} \end{pmatrix}{{/katex}} ,
+		{{#katex}}A \begin{pmatrix} 0\\ 0 \\ 1 \end{pmatrix}= \begin{pmatrix}a_{13} \\ a_{23} \\ a_{33} \end{pmatrix}{{/katex}} <br>
+		<br>
 		{{>addform}}
 		<br>
-		<div id="katexfield5">
+		<br>
+		<div id="katexfield5" class="centro">
 		</div>
 	</div>
 
@@ -27,7 +49,10 @@
 		<input type="text" name="a21">
 		<input type="text" name="a22">
 		<input type="text" name="a23"> <br>
-		<input type="submit" name="submit" value="Save Matrix">
+		<input type="text" name="a31">
+		<input type="text" name="a32">
+		<input type="text" name="a33"> <br>
+		<input type="submit" name="submit" value="Save">
 	</form>
 
 </template>
