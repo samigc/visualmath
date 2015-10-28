@@ -217,6 +217,7 @@ VM.Vector = function(destination , origin , options){
   this.add(this.vectorObject);
   destination.copy(this.destination);
   this.cone = this.vectorObject.cone;
+  this.translation = VM.V3();
 };
 
 VM.Vector.prototype = Object.create(THREE.Group.prototype);

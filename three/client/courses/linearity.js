@@ -220,7 +220,9 @@ for (var i = 0; i < gl.base.geom.length; i++) {
     var up= VM.keyControls(gl.vector.geom[3].destination,0.1);
     var ejex = new VM.V3(up.x,0,0);
     var ejey = new VM.V3(0,up.y,0);
+    gl.vector.geom[1].translateTo(gl.vector.geom[0].destination);
     var ejez = new VM.V3(0,0,up.z);
+    gl.vector.geom[2].translateTo(VM.V3().addVectors(gl.vector.geom[1].destination, gl.vector.geom[1].translation));
 
     gl.vector.geom[3].UpdateTarget(up);
     gl.vector.geom[0].UpdateTarget(ejex);
