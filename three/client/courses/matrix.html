@@ -1,16 +1,33 @@
 <template name="courses_matrix">
 	<h1 class="centro"> What is a Matrix?</h1>
-	<div class="marry texto">
-		<form class="matrixinput" method="post">
-			<input type="text" name="a11" value="a11"> <br>
-			<input type="text" name="a12" value="a12"> <br>
-			<input type="text" name="a21" value="a21"> <br>
-			<input type="text" name="a22" value="a22"> <br>
-			<input type="submit" name="submit" value="submit">
-		</form>
+	<div class="merry texto centro">
 
+		A matrix is a list of arrays that describes a linear transformation in the space.
+		<br>
+		To apply the transformation {{#katex}}A{{/katex}} to a vector, it just simply takes the multiplication
+		<br>
+		{{#katex}}A x= {{/katex}}
+		{{>addform}}
+		<br>
+		<div id="katexfield5">
+		</div>
 	</div>
+
+
 
 	<div class="courses_distance">
 	</div>
+</template>
+
+<template name="addform">
+	<form class="matrixinput">
+		<input type="text" name="a11">
+		<input type="text" name="a12">
+		<input type="text" name="a13">  <br>
+		<input type="text" name="a21">
+		<input type="text" name="a22">
+		<input type="text" name="a23"> <br>
+		<input type="submit" name="submit" value="Save Matrix">
+	</form>
+
 </template>

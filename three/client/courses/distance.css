@@ -51,3 +51,7 @@
 .rojo {
 	color: #ff1e33;
 }
+
+ .matrixinput input {
+	width: 50px;
+}

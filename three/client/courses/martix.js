@@ -67,8 +67,11 @@ Template.courses_matrix.rendered = function() {
                         gl.camera.position.z = 8;
                         gl.camera.lookAt(gl.scene.position);
 
+                        //Create container
+                        gl.container=$(".courses_distance");
+
                         //Controls (?move to VM)
-                        gl.controls = new THREE.TrackballControls( gl.camera );
+                        gl.controls = new THREE.TrackballControls( gl.camera, gl.container.get(0) );
                         gl.controls.addEventListener( 'change', renderView );
                         gl.controls.rotateSpeed = 2.0;
                         gl.controls.zoomSpeed = 1.2;
@@ -117,10 +120,6 @@ Template.courses_matrix.rendered = function() {
                         var line = new THREE.Line( geometry, material );
                         gl.scene.add( line );
 
-
-                        gl.container=$(".courses_distance");
-
-
                 }
                 gl.container.append(gl.renderer.domElement);
                 drawWindow();
@@ -138,15 +137,26 @@ Template.courses_matrix.rendered = function() {
                 gl.renderer.render(gl.scene,gl.camera);
                 gl.camera.lookAt(gl.scene.position);
 
+
         }
 
 }
 
-Template.courses_matrix.events({
-        "submit .matrixinput": function (event) {
+Template.addform.events({
+        'submit form' : function (event) {
+                event.preventDefault();
 
+                 a11=event.target.a11.value;
+                 a12=event.target.a12.value;
+                 a21=event.target.a21.value;
+                 a22=event.target.a22.value;
 
-                console.log($("#a11").get(0));
+                                         elem=$("#katexfield5")
+                                         katex.render("\\begin{pmatrix} "+
+                                         a11+"&"+a12 +"\\\\"+
+                                         a21+"&"+a22 +
+                                          "\\end{pmatrix}",elem.get(0));
+
                 return false;
 
         }
