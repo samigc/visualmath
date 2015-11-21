@@ -1,4 +1,4 @@
-Template.matreft.rendered = function(){
+Template.mattrat.rendered = function(){
 	var gl;
 	var step = 0;
 
@@ -71,8 +71,8 @@ Template.matreft.rendered = function(){
 			gl.controls.staticMoving = true;
 			gl.controls.dynamicDampingFactor = 0.3;
 			//Initial camera position
-			gl.camera.position.x = -1;
-			gl.camera.position.y = -1;
+			gl.camera.position.x = 0;
+			gl.camera.position.y = 0;
 			gl.camera.position.z = 3;
 			gl.camera.lookAt(gl.scene.position);
 
@@ -91,51 +91,31 @@ Template.matreft.rendered = function(){
 			}
 			gl.scene.add(gl.axes[0]);
 			gl.scene.add(gl.axes[1]);
-
+			/*
 			gl.cube = {};
 			cb = gl.cube;
-			cb.cube = new THREE.Mesh(new THREE.CubeGeometry(.5, .5, .5), new THREE.MeshNormalMaterial({transparent:true,opacity:0.5}));
+			cb.cube = new THREE.Mesh(new THREE.BoxGeometry(.5, .5, .5), new THREE.MeshNormalMaterial({transparent:true,opacity:0.5}));
 			gl.scene.add( cb.cube );
+			*/
+
+			gl.knot = {};k= gl.knot;
+			k.geometry = new THREE.TorusKnotGeometry( 0.3, 0.05, 100, 16 );
+			k.material = new THREE.MeshNormalMaterial( { transparent: true, opacity : 0.7 } );
+			k.mesh = new THREE.Mesh( k.geometry, k.material );
+			gl.scene.add( k.mesh );
 
 			var light = new THREE.AmbientLight( 0xffffff );
 			light.position.set( 20, 10, 50 );
 			gl.scene.add( light );
 
-			gl.refplane= {};
-			gl.refplane.geom = new THREE.PlaneGeometry(30,30,20,20);
-			gl.refplane.material = new THREE.MeshLambertMaterial({color: 0x00ff00, transparent: true, opacity: 0.5});
-			gl.refplane.material.side = THREE.DoubleSide;
-			gl.refplane.mesh = new THREE.Mesh(gl.refplane.geom,gl.refplane.material);
-
-			gl.scene.add(gl.refplane.mesh);
-
-			gl.planevec = new VM.Vector(VM.V3(5,5,5));
-			//gl.planevec.visible = false;
-			gl.scene.add(gl.planevec);
 		}
-
-
-		$('a#z-button').click(function(){
-			$(this).toggleClass("down");
-			gl.zlock = !(gl.zlock);
-
-			if(gl.zlock){
-				gl.camera.rotation.set(new THREE.Vector3( 0, 0,0));
-				gl.camera.position.x = 0;
-				gl.camera.position.y = 0;
-				gl.zlockz = gl.camera.position.z;
-				gl.camera.position.z = gl.zlockz;;
-				gl.camera.lookAt(gl.scene.position);
-			}
-
-		});
 
 		//Render the scene in the current Page
 		gl.container = $('#top');
 		//There seems to be no problem with appending the canvas again since the object reference is the same.
 		gl.container.append(gl.renderer.domElement);
 		drawWindow();
-		gl.vars={a:1,b:1,c:1};
+		gl.vars={x:0,y:0,z:0};
 	}
 
 	function renderView(){
@@ -150,61 +130,27 @@ Template.matreft.rendered = function(){
 		gl.rotvec = VM.V3();
 		gl.rotvec = VM.keyControls(gl.rotvec,0.03);
 
+		gl.vars.x += gl.rotvec.x;
+		gl.vars.y += gl.rotvec.y;
+		gl.vars.z += gl.rotvec.z;
+
+		var x = (gl.vars.x);
+		var y = (gl.vars.y);
+		var z = (gl.vars.z);
 
 
-		gl.vars.a += gl.rotvec.x;
-		gl.vars.b += gl.rotvec.y;
-		gl.vars.c += gl.rotvec.z;
-
-
-		if(gl.vars.a > 4){gl.vars.a = 4}
-		if(gl.vars.b > 4){gl.vars.b = 4}
-		if(gl.vars.c > 4){gl.vars.c = 4}
-
-		if(gl.vars.a < -4){gl.vars.a = -4}
-		if(gl.vars.b < -4){gl.vars.b = -4}
-		if(gl.vars.c < -4){gl.vars.c = -4}
-
-		var a = (gl.vars.a);
-		var b = (gl.vars.b);
-		var c = (gl.vars.c);
-
-		var norm = VM.V3(a,b,c);
-		norm.normalize();
-		a = norm.x;
-		b = norm.y;
-		c = norm.z;
-
-		if(gl.zlock){
-			gl.camera.position.set(a,b,c);
-			gl.camera.position.multiplyScalar(3);
-			gl.camera.lookAt(VM.V3());
-		}
-
-
-		gl.cube.cube.matrixAutoUpdate = false;
+		gl.knot.mesh.matrixAutoUpdate = false;
 		ref = new THREE.Matrix4();
-		ref.makeRotationAxis(norm,2 * Math.PI*Math.sin(step));
-		gl.cube.cube.matrix.copy(ref);
-		gl.planevec.UpdateTarget(VM.V3(a,b,c));
-		gl.refplane.mesh.matrix .copy(gl.planevec.cone.matrixWorld);
+		ref.set(1,0,0,x,
+			0,1,0,y,
+			0,0,1,z,
+			0,0,0,1);
+		gl.knot.mesh.matrix.copy(ref);
 
 
-		var rotmatx = new THREE.Matrix4();
-		var centmatx = new THREE.Matrix4();
-		centmatx.set(0,0,0,-a,
-			0,0,0,-b,
-			0,0,0,-c,
-			0,0,0,0
-		);
-		rotmatx.makeRotationX(90*Math.PI / 180);
-		gl.refplane.mesh.matrix.multiply(rotmatx);
-		gl.refplane.mesh.matrixAutoUpdate = false;
-		vadd(gl.refplane.mesh.matrix.elements, centmatx.elements);
+		var elem=$("#translate-matrix");
 
-		var elem=$("#reflect-matrix");
-
-		katex.render(" a : "+ a +" "+" b : "+ b +" "+" c : "+ c +" ",elem.get(0));
+		katex.render("( x : "+ x +",  y : "+ y +" , z :  "+z+")",elem.get(0));
 	}
 }
 
