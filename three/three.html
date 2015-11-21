@@ -1,8 +1,10 @@
 <head>
         <title>Visual Math</title>
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css">
-        <link href='https://fonts.googleapis.com/css?family=Merriweather:700,400italic,900,700italic,300,900italic' rel='stylesheet' type='text/css'>
+<!--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+-->        <link href='https://fonts.googleapis.com/css?family=Merriweather:700,400italic,900,700italic,300,900italic' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
@@ -65,10 +67,25 @@
         <a href="/examples/first">3d axis with multiple vectors</a>
         <h2>Vectors</h2>
         <a href="/examples/second">Vector operations</a>
+        <h2>Transforms</h2>
+        <a href="/examples/third">Transforms</a>
 
 </template>
 
 <template name="examples_first">
+        <div id="top">
+        </div>
+</template>
+<template name="examples_third">
+        <div id="controls">
+                Rotation of a cube using linear transformations
+                <div id="rotate-matrix">
+                </div>
+                <div id ="button">
+                        <a id="z-button" title="z-button">z-lock</a>
+                </div>
+        </div>
+
         <div id="top">
         </div>
 </template>

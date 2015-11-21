@@ -71,7 +71,7 @@ Template.courses_matrix.rendered = function() {
                         gl.container=$(".courses_distance");
 
                         //Controls (?move to VM)
-                        gl.controls = new THREE.TrackballControls( gl.camera, gl.container.get(0) );
+                        gl.controls = new THREE.TrackballControls( gl.camera );
                         gl.controls.addEventListener( 'change', renderView );
                         gl.controls.rotateSpeed = 2.0;
                         gl.controls.zoomSpeed = 1.2;
@@ -92,6 +92,8 @@ Template.courses_matrix.rendered = function() {
                         gl.axes[2].rotation.y = Math.PI/2;
                         gl.scene.add(gl.axes[2]);
 
+                        gl.m3 = new THREE.Matrix3() ;
+                        //console.log(gl.m3);
                         //Draw vctors
                         gl.vector = {v3: new Array(3), geom: new Array(3) };
                         for (var i = 0; i < gl.vector.v3.length; i++) {
@@ -109,6 +111,10 @@ Template.courses_matrix.rendered = function() {
                                 color: 0x0000ff
                         });
 
+                         for (var i = 0; i < gl.vector.v3.length; i++) {
+                                 gl.vector.v3[i].transvec = VM.V3();
+                         }
+
                         var geometry = new THREE.Geometry();
                         geometry.vertices.push(
                                 gl.vector.v3[0],
@@ -119,10 +125,12 @@ Template.courses_matrix.rendered = function() {
 
                         var line = new THREE.Line( geometry, material );
                         gl.scene.add( line );
-
+                        console.log(line);
                 }
+                gl.line = line;
                 gl.container.append(gl.renderer.domElement);
                 drawWindow();
+                gl.def= false;
         }
 
 
@@ -136,8 +144,22 @@ Template.courses_matrix.rendered = function() {
                 gl.axes[2].lookAt(gl.camera);
                 gl.renderer.render(gl.scene,gl.camera);
                 gl.camera.lookAt(gl.scene.position);
+                //console.log(gl.m3.elements);
+                if(gl.def){
+                for (var i = 0; i < gl.vector.geom.length; i++) {
+                        gl.vector.geom[i].UpdateTarget(gl.vector.v3[i].transvec)
+                }
+                }
 
+                gl.line.geometry.vertices[0] = gl.vector.geom[0].destination;
+                                gl.line.geometry.vertices[1] = gl.vector.geom[1].destination;
+                                                gl.line.geometry.vertices[2] = gl.vector.geom[2].destination;
+                                                                gl.line.geometry.vertices[3] = gl.vector.geom[0].destination;
 
+                console.log(gl.line.geometry.vertices[1]);
+                gl.line.geometry.verticesNeedUpdate = true;
+                //console.log(gl.vector.v3);
+                //console.log(a11);
         }
 
 }
@@ -145,8 +167,8 @@ Template.courses_matrix.rendered = function() {
 Template.addform.events({
         'submit form' : function (event) {
                 event.preventDefault();
-
-                 a11=event.target.a11.value;
+                gl = VM.Storage.secondexample;
+                 var a11=event.target.a11.value;
                  a12=event.target.a12.value;
                  a13=event.target.a13.value;
                  a21=event.target.a21.value;
@@ -154,7 +176,16 @@ Template.addform.events({
                  a23=event.target.a23.value;
                  a31=event.target.a31.value;
                  a32=event.target.a32.value;
-                 a33=event.target.a23.value;
+                 a33=event.target.a33.value;
+                 gl.m3.set(a11,a12,a13,a21,a22,a23,a31,a32,a33);
+                 for (var i = 0; i < gl.vector.v3.length; i++) {
+                         gl.vector.v3[i].transvec.copy(gl.vector.v3[i]);
+                         gl.vector.v3[i].transvec.applyMatrix3(gl.m3);
+                 }
+                 gl.def = true;
+                 //gl.vector.v3[1].transvec.copy(gl.vector.v3[1]);
+                 //gl.vector.v3[1].transvec.applyMatrix3(gl.m3);
+                 //console.log(gl.m3);
 
                                          elem=$("#katexfield5")
                                          katex.render("\\begin{pmatrix} "+
@@ -162,7 +193,6 @@ Template.addform.events({
                                          a21+"&"+a22 +"&"+a23 +"\\\\"+
                                          a31+"&"+a32 +"&"+a33 +
                                           "\\end{pmatrix}",elem.get(0));
-
                 return false;
 
         }

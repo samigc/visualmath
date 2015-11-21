@@ -134,6 +134,7 @@ Template.examples_second.rendered = function(){
                 //There seems to be no problem with appending the canvas again since the object reference is the same.
                 gl.container.append(gl.renderer.domElement);
                 drawWindow();
+
         }
 
         function renderView(){

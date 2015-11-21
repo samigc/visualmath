@@ -1,0 +1,123 @@
+<head>
+        <title>visualcourses</title>
+        <link rel="stylesheet" href="/scripts/pure-min.css">
+        <script src="/scripts/three.js"></script>
+        <script src="/scripts/threex.js"></script>
+        <script src="/scripts/tween.min.js"></script>
+        <script src="/scripts/zTrackballControls.js"></script>
+        <script src="/scripts/threex.domevents.js"></script>
+        <script src="/scripts/threex.keyboardstate.js"></script>
+        <script src="/scripts/zAller_Regular.js"></script>
+        <script src="/scripts/Please-compressed.js"></script>
+        <script src="/scripts/visualMath.js"></script>
+</head>
+
+<body>
+        {{> headerbar}}
+        <div class="pure-g">
+                {{> graphics}}
+                {{> center}}
+        </div>
+</body>
+
+
+
+
+
+<template name="headerbar">
+        <div class="headerbar">{{>sidebar}}
+
+                <div id="statebar">
+                </div>
+        </div>
+</template>
+<template name="sidebar">
+        <div class="sidebar">
+
+                <div class="pure-menu custom-restricted-width pure-menu-horizontal">
+                        <ul class="pure-menu-list">
+                                <li class="pure-menu-item vmtitle">Visual Math<span class="tinyspan">by Sandra Guayambuco</span></li>
+                                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover biglink"> Explore &#x25BC;
+                                        <ul class="pure-menu-children">
+                                                <span class="pure-menu-heading">Concepts</span>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Linearity</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Vector Addition</a></li>
+                                                <!--<li class="pure-menu-item"><a href="#" class="pure-menu-link">Vector Substraction</a></li>
+                                                --><li class="pure-menu-item"><a href="#" class="pure-menu-link">Matrix</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Matrix Addition</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Matrix Multiplication</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Matrix Properties</a></li>
+                                                <li class="pure-menu-heading">Transformations</li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Rotation</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Scaling</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Reflection</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Shearing</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Translation</a></li>
+                                                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Projection</a></li>
+                                        </ul>
+                                </li>
+                                <li class="pure-menu-item">&#x20;&#x20;&#x20;<span id="statebar"></span></li>
+                        </ul>
+                </div>
+
+        </div>
+</template>
+<template name="center">
+
+        <div class="center pure-u-1-1">
+                <div class="bigbox">
+                        {{#if linear}}
+                        {{> lineart}}
+                        {{/if}}
+                        {{#if vecadd}}
+                        {{> vecaddt}}
+                        {{/if}}
+                        {{#if vecsub}}
+                        {{> vecsubt}}
+                        {{/if}}
+                        {{#if matrix}}
+                        {{> matrixt}}
+                        {{/if}}
+                        {{#if matadd}}
+                        {{> mataddt}}
+                        {{/if}}
+                        {{#if matmul}}
+                        {{> matmult}}
+                        {{/if}}
+                        {{#if matpro}}
+                        {{> matprot}}
+                        {{/if}}
+                        {{#if matrot}}
+                        {{> matrott}}
+                        {{/if}}
+                        {{#if matsca}}
+                        {{> matscat}}
+                        {{/if}}
+                        {{#if matref}}
+                        {{> matreft}}
+                        {{/if}}
+                        {{#if matshe}}
+                        {{> matshet}}
+                        {{/if}}
+                        {{#if mattra}}
+                        {{> mattrat}}
+                        {{/if}}
+                        {{#if matproj}}
+                        {{> matprojt}}
+                        {{/if}}
+                </div>
+        </div>
+</template>
+<template name="matmult">
+        Multiplication
+</template>
+<template name="matprot">
+</template>
+<template name="matshet">
+</template>
+<template name="mattrat">
+</template>
+<template name="matprojt">
+</template>
+<template name="graphics">
+</template>

@@ -57,3 +57,7 @@ Router.route('/examples/first', function () {
 Router.route('/examples/second', function () {
   this.render('examples_second');
 });
+
+Router.route('/examples/third', function () {
+  this.render('examples_third');
+});

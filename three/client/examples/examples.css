@@ -37,3 +37,25 @@
 	position: absolute;
 	font-family:'Merryweather' ,serif;
 }
+
+a#z-button {
+    background: #ccc;
+    cursor: pointer;
+    border-top: solid 2px #eaeaea;
+    border-left: solid 2px #eaeaea;
+    border-bottom: solid 2px #777;
+    border-right: solid 2px #777;
+    padding: 5px 5px;
+    border-radius: 20px;
+    }
+
+.down {
+	color: #37f ;
+	font-weight: bold;
+    background:  #226 !important;
+    border-top: solid 2px #777 !important;
+    border-left: solid 2px #777 !important;
+    border-bottom:solid 2px  #eaeaea  !important;
+    border-right: solid 2px #eaeaea !important;
+     border-radius: 20px;
+    }

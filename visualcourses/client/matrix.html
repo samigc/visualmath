@@ -1,0 +1,141 @@
+<template name="addform">
+	<form class="matrixinput">
+		<input type="text" name="a11">
+		<input type="text" name="a12">
+		<input type="text" name="a13">  <br>
+		<input type="text" name="a21">
+		<input type="text" name="a22">
+		<input type="text" name="a23"> <br>
+		<input type="text" name="a31">
+		<input type="text" name="a32">
+		<input type="text" name="a33"> <br>
+		<input type="submit" name="submit" value="Go!">
+	</form>
+
+</template>
+
+
+<template name="matrixt">
+	<div class="pure-g">
+		<div class="pure-u-1-1">
+			Matrices
+		</div>
+
+		<div class="pure-u-1-5">
+
+
+		</div>
+		<div class="pure-u-3-5">
+			<div class="merry texto centro">
+
+				A matrix is an arrangement of numbers in a square, for example
+
+				{{#katex}}\begin{pmatrix}1 & 2 & 3\\
+				-5 & 4 & 8\\
+				3 & 2 & -3
+				\end{pmatrix}{{/katex}}
+
+				It can be seen like an arrangement of three rows or an arrangement of three columns, these are also called vectors,
+				who represents an arrow in the cartesian plane.
+				<br>
+				{{#katex}}Row1=\begin{pmatrix}1 & 2 & 3 \end{pmatrix}{{/katex}},
+				{{#katex}}Row2=\begin{pmatrix}-5 & 4 & 8 \end{pmatrix}{{/katex}},
+				{{#katex}}Row3=\begin{pmatrix}3 & 2 & -3 \end{pmatrix}{{/katex}},
+				<br><br>
+				{{#katex}}Column1=\left(
+				\begin{array}{c}
+				1\\
+				-5\\
+				3
+				\end{array}
+				\right){{/katex}}, {{#katex}}Column2=\left(
+				\begin{array}{c}
+				2\\
+				4\\
+				2
+				\end{array}
+				\right){{/katex}} , {{#katex}}Column3=
+				\left(
+				\begin{array}{c}
+				3\\
+				8\\
+				-3
+				\end{array}
+				\right){{/katex}} <br>
+				<br>
+				A matrix is called a transformation because it can scale, shear, rotate, reflect and project a vector.
+				<br>
+				<br>
+				The dimensions of the matrix are <i>number of rows</i> &#215; <i>number of columns</i> and a position of an element is called with two coordinates,
+				the first coordinate is the row, and the second is the column.
+				<br>
+				<br>
+				To apply the transformation to a vector {{#katex}}v=\begin{pmatrix} v_{x}\\ v_{y} \\ v_{z} \end{pmatrix}{{/katex}}, we simply multiply
+				<br>
+				<br>
+				{{#katex}}\begin{pmatrix}1 & 2 & 3\\
+				-5 & 4 & 8\\
+				3 & 2 & -3
+				\end{pmatrix} \begin{pmatrix} v_{x}\\ v_{y} \\ v_{z} \end{pmatrix} {{/katex}},<br> <br>
+				That is equal to
+				<br>
+				<br>
+				{{#katex}} \begin{pmatrix}1 v_{x} + 2 v_{y} + 3 v_{z}\\
+				-5 v_{x} + 4 v_{y} + 8 v_{z}\\
+				3 v_{x} + 2 v_{y} + -3 v_{z}
+				\end{pmatrix}{{/katex}}
+				<br>
+				<br>
+				In the concrete case that {{#katex}}v=\begin{pmatrix} 8\\ 3\\ 4 \end{pmatrix} {{/katex}}
+				<br>
+				<br>
+				{{#katex}}\begin{pmatrix}1 & 2 & 3\\
+				-5 & 4 & 8\\
+				3 & 2 & -3
+				\end{pmatrix} \begin{pmatrix} 8\\ 3 \\ 4 \end{pmatrix}= \begin{pmatrix} -1\\ 1 \\ -3 \end{pmatrix} {{/katex}}
+				<br>
+				<br>
+				It is a vector and represent an arrow from zero to the coordinate {{#katex}} (-1,1,-3) {{/katex}}.
+				<br>
+				In order to know how the transformation proceeds, we can inspect how the basis is transformated.We take the canonical basis that is
+				{{#katex}} \begin{pmatrix} 1\\ 0 \\ 0 \end{pmatrix}{{/katex}},
+				{{#katex}} \begin{pmatrix} 0\\ 1 \\ 0 \end{pmatrix}{{/katex}},
+				{{#katex}} \begin{pmatrix} 0\\ 0 \\ 1 \end{pmatrix}{{/katex}}
+				<br>
+				<br>
+				then
+				<br>
+				<br>
+				{{#katex}} \begin{pmatrix} 1\\ 0 \\ 0 \end{pmatrix}= \begin{pmatrix}a_{11} \\ a_{21} \\ a_{31} \end{pmatrix}{{/katex}} ,
+				{{#katex}} \begin{pmatrix} 0\\ 1 \\ 0 \end{pmatrix}= \begin{pmatrix}a_{12} \\ a_{22} \\ a_{32} \end{pmatrix}{{/katex}} ,
+				{{#katex}} \begin{pmatrix} 0\\ 0 \\ 1 \end{pmatrix}= \begin{pmatrix}a_{13} \\ a_{23} \\ a_{33} \end{pmatrix}{{/katex}}
+				<br>
+				The transformation send the vector from an space of dimension {{#katex}}n{{/katex}} to a space of dimension {{#katex}}m{{/katex}}, in other
+				words, the matrix {{#katex}}mxn{{/katex}} multiplied by a vector {{#katex}}\( u_{1},u_{2},...,u_{n} \){{/katex}} is a vector {{#katex}}\( v_{1},v_{2},...,v_{m} \){{/katex}}
+				<br>
+				<br>
+				That explains why transformations
+				<ul><li>From two-dimensional space to the same space are matrices 2x2</li>
+					<li> From three-dimensional space to the same space are matrices 3x3.</li>
+					<li> From two-dimensional space to three-dimensional are matrices 3x2.</li>
+					<li> From three-dimensional space to two-dimensional are matrices 2x3.</li>
+				</ul>
+				<br>
+				<br>
+				<br>
+			</div>
+		</div>
+		<div class="pure-u-1-5">
+
+
+		</div>
+		<div class="pure-u-1-1"><div class="graphics"></div></div>
+		<div class="pure-u-1-3">
+			<div id="katexfield5"></div>
+		</div>
+		<div class="pure-u-1-3">
+			Instructions for the controls can go here.
+		</div>
+		<div class="pure-u-1-3">{{>addform}}</div>
+	</div>
+</template>

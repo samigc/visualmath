@@ -1,0 +1,207 @@
+/* CSS declarations go here */
+body {
+	font-family: 'Slabo 13px', serif;
+	background-color: #fffcf8;
+}
+
+.eqfield {
+	position: absolute;
+}
+
+.centro {
+	text-align: center;
+}
+
+.tinyspan{
+	font-size: 9px;
+	left: -60px;
+	top : 13px;
+	position: relative;
+	padding: 2px;
+	font-weight: 700 !important;
+	font-family: 'Merriweather', serif;
+}
+
+.graphics{
+	position: relative;
+}
+
+.headerbar {
+	background-color: #351a05;
+	color: #fffcf8;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 5px;
+}
+
+#statebar {
+	margin-left: 30px!important;
+}
+
+.vmtitle{
+	color: #fffcf8 !important;
+	font-family: 'Merriweather', serif;
+	padding: 10px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.bigbox {
+	padding: 10px;
+	font-family: 'Merriweather', serif;
+
+}
+
+.biglink{
+	color: #fffcf8 !important;
+	border-radius: 20px;
+	font-size: 20px;
+	margin-left: 30px !important;
+}
+
+.sidebar{
+	background-color: #351a05;
+	display: inline;
+}
+
+.center{
+	background-color: #fffcf8;
+}
+
+.graphics{
+	background: color: #fffcf8;
+}
+
+
+.centro {
+	text-align: center;
+}
+
+.infosquare{
+	margin: 5px;
+	padding: 10px;
+	border: solid;
+	border-radius: 10px;
+	border-color: #bbab88;
+	font-size: 18px;
+	color : #444444;
+	text-align: justify;
+}
+
+.let {
+	border : solid;
+	border-radius: 7px;
+	border-color: #888;
+	background-color: #888;
+	text-align: center;
+	margin : 4px;
+	padding : 0px 3px 0px 4px;
+	color : #ddd;
+	font-weight: 600;
+	text-shadow: none;
+	font-family: sans-serif;
+
+}
+
+
+.pure-menu-link {
+	font-family: 'Slabo 13px', serif;
+	color: #fffcf8 !important;
+	border-radius: 20px;
+}
+
+.pure-menu-link:hover {
+	background-color: #b08a6e !important;
+}
+
+.pure-menu-link:focus{
+	background-color: #b08a6e !important;
+}
+
+.pure-menu-children{
+	background-color: #c9b4a4 !important;
+}
+
+.pure-menu-heading {
+	font-family: 'Slabo 13px', serif;
+	color: #351a05 !important;
+	font-weight: bold;
+	text-align: right;
+}
+
+.matrixinput input {
+       width: 40px;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Slabo 13px';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Slabo 13px'), local('Slabo13px-Regular'), url(/fonts/B9U01_cNwYDvIHK04hXMriEAvth_LlrfE80CYdSH47w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Slabo 13px';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Slabo 13px'), local('Slabo13px-Regular'), url(/fonts/fScGOqovO8xyProgHURSR_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Merriweather'), url(/fonts/RFda8w1V0eDZheqfcyQ4ED0LW-43aMEzIO6XUTLjad8.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Merriweather'), url(/fonts/RFda8w1V0eDZheqfcyQ4EOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Merriweather Bold'), local('Merriweather-Bold'), url(/fonts/ZvcMqxEwPfh2qDWBPxn6nuIaMZP5eRGvEWe_CNIU_oY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Merriweather Bold'), local('Merriweather-Bold'), url(/fonts/ZvcMqxEwPfh2qDWBPxn6nnNuWYKPzoeKl5tYj8yhly0.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+a#z-button {
+    background: #ccc;
+    cursor: pointer;
+    border-top: solid 2px #eaeaea;
+    border-left: solid 2px #eaeaea;
+    border-bottom: solid 2px #777;
+    border-right: solid 2px #777;
+    padding: 5px 5px;
+    border-radius: 20px;
+    }
+
+.down {
+	color: #37f ;
+	font-weight: bold;
+    background:  #226 !important;
+    border-top: solid 2px #777 !important;
+    border-left: solid 2px #777 !important;
+    border-bottom:solid 2px  #eaeaea  !important;
+    border-right: solid 2px #eaeaea !important;
+     border-radius: 20px;
+    }
