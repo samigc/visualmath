@@ -1,4 +1,4 @@
-Template.vecaddt.rendered = function() {
+Template.vecaddi.rendered = function() {
 
   var gl;
   var step = 0;

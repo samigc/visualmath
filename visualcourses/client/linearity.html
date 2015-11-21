@@ -1,90 +1,313 @@
 <template name="lineart">
 
-	<h1>What is Linearity?</h1>
+	<h1>Qué es Linealidad?</h1>
      <div class="merry texto">
      <br>
-     In {{#katex}} \mathcal{R}^{3} {{/katex}} the three dimentional space every vector {{#katex}}v=\begin{pmatrix}
-     v_{x}\\
-     v_{y}\\
-     v_{z}
-     \end{pmatrix} {{/katex}} is the linear combination of the three numbers
-     {{#katex}} v_{x}, v_{y}{{/katex}} and {{#katex}} v_{z}{{/katex}} , and three
-     vectors
-     {{#katex}}
-     \begin{pmatrix}
-     1\\
-     0\\
-     0
-     \end{pmatrix}
-     ,
-     \begin{pmatrix}
-     0\\
-     1\\
-     0
-     \end{pmatrix}
-     {{/katex}}
-     and
-     {{#katex}}
-     \begin{pmatrix}
-     0\\
-     0\\
-     1
-     \end{pmatrix}
-     {{/katex}}.
-     <br>
-     <br>
-     These vectors are called the <b class="rojo">BASIS</b> of the space.
-     <br>
-     And the number of vectors in the Basis is the number of the
-     dimension of the space, that is, {{#katex}} \mathcal{R}^{3} {{/katex}} dimension is 3.
-     <br>
-     <br>
-     Equivalent to,
-     <br>
-     <br>
-     <div class="centro">
-     {{#katex}}
-     v=v_{x}\begin{pmatrix}
-     1\\
-     0\\
-     0
-     \end{pmatrix}
-     +
-     v_{y}
-     \begin{pmatrix}
-     0\\
-     1\\
-     0
-     \end{pmatrix}
-     +v_{z}
-     \begin{pmatrix}
-     0\\
-     0\\
-     1
-     \end{pmatrix}
-     {{/katex}}
-     <br>
-     <br>
-     Or
-     <br>
-     <br>
-     <div class="centro">
-     {{#katex}}
-     v=v_{x} {\hat{i}}  + v_{y} {\hat{j}} + v_{z} {\hat{k}}
-     {{/katex}}
-     <br>
-     <br>
-     The vector shown in the graphic is
-     <br>
-     </div>
-     <br>
-     <br>
-     <div id="katexfield4" class="centro">123</div>
-     <br>
-     <br>
-     </div>
-     </div>
-     <div class="graphics">
+		<br>
+		Los objetos en el espacio tridimensional se forman a partir de puntos, que forman rectas, curvas, que forman superficies, planos, que forman volumenes, etc.
+		Para dibujar un objeto en espacio tridimensional es necesario saber donde se va a colocar, para ello es necesario construir
+		un sistema de coordenadas que consiste en un punto como el origen, y la ubicación de todos los puntos que lo forman respecto a tres coordenadas:
+		<br>
+		<br>
+		x: "ancho desde el origen"
+		y: "alto desde el origen"
+		z: "profundidad desde el origen"
+<br>
+<br>
+		Estas coordenadas son conocidas como las coordenadas cartesianas.
+		<br>
+		<br>
+		Estas coordenadas escritas en un arreglo es llamado vector, por ejemplo el
+		vector {{#katex}}v{{/katex}}, cuyas coordenadas de manera general notaremos como
+		<br>
+		<br>
+	{{#katex}}	v_{x},
+		v_{y},
+		v_{z}{{/katex}} ,
+son {{#katex}} 2,1,0 {{/katex}} respectivamente. Equivalente a
+ <br>
+<br><div class="center">
 
-     </div>
+
+		{{#katex}}v=\begin{pmatrix}
+		v_{x}\\
+		v_{y}\\
+		v_{z}
+		\end{pmatrix}=\begin{pmatrix}
+		2\\
+		1\\
+		0
+		\end{pmatrix} {{/katex}}
+		</div>
+<br>
+<br>
+		Es posible realizar operaciones aritmeticas con los vectores, es decir :
+<br>
+		<ul>
+			<li>Suma de vectores: Representa geometricamente el vector dirigido hacia
+				 el final del camino creado colocando un vector tras otro formando un solo
+				camino, preservando la longitud y la dirección de cada uno.
+				Tal y como se ve en la animación
+				<br>
+				<br>
+				Y analíticamente se calcula asi:
+				<br>
+				<br>
+				Si
+				{{#katex}}
+				u=\begin{pmatrix}
+				u_{x}\\
+				u_{y}\\
+				u_{z}
+				\end{pmatrix}= \begin{pmatrix}
+				4\\
+				3\\
+				-1
+				\end{pmatrix}{{/katex}} y
+				{{#katex}}
+				v=\begin{pmatrix}
+				v_{x}\\
+				v_{y}\\
+				v_{z}
+				\end{pmatrix}= \begin{pmatrix}
+				2\\
+				5\\
+				2
+				\end{pmatrix}{{/katex}} <br>
+				<br>
+				su suma es  <br>
+				<br>
+				<div class="centro">
+
+					{{#katex}}
+					u+v=\begin{pmatrix}
+					u_{x}+v_{x}\\
+					u_{y}+v_{y}\\
+					u_{z}+v_{z}
+					\end{pmatrix}= \begin{pmatrix}
+					4+2\\
+					3+5\\
+					-1+2
+					\end{pmatrix}= \begin{pmatrix}
+					6\\
+					8\\
+					1
+					\end{pmatrix}{{/katex}}
+				</div>
+				<br>
+				<br>
+				</li>
+			{{>vecaddi}}
+<br>
+				<li>Diferencia de vectores: Geométricamente representa el vector que une
+					las dos cabezas de los vectores a substraer, dirigido hacia el vector inicial.
+					<br>
+					También es un caso particular de la suma de vectores ya que {{#katex}}u-v=u+(-v){{/katex}}
+					<br>
+				Tal y como se ve en la animación.
+				<br>
+				La diferencia es muy útil para crear vectores en el espacio, vectores que no nazcan en el origen.
+				<br>
+				Si queremos calcular la diferencia entre {{#katex}}u{{/katex}} y {{#katex}}v{{/katex}} analíticamente, procedemos así:
+				<br>
+				<br>
+				<div class="centro">
+
+					{{#katex}}
+					u-v=\begin{pmatrix}
+					u_{x}-v_{x}\\
+					u_{y}-v_{y}\\
+					u_{z}-v_{z}
+					\end{pmatrix}= \begin{pmatrix}
+					4-2\\
+					3-5\\
+					-1-2
+					\end{pmatrix}= \begin{pmatrix}
+					4\\
+					-2\\
+					-3
+					\end{pmatrix}{{/katex}}
+				</div>
+				<br><br>
+				</li>
+				<li>Multiplicación por escalar (o número) : Representa un escalamiento del vector, si {{#katex}}k{{/katex}} es el escalar entonces <br>
+
+				<ul>
+					<li>Si {{#katex}} k &lt; 1{{/katex}} el escalamiento es una reducción </li>
+						<li>Si {{#katex}}k &gt; 1{{/katex}}, el escalamiento es un agrandamiento</li>
+						<li> Si {{#katex}}k=1{{/katex}} el escalamiento no modifica nada</li>
+				</ul>
+
+				<br>
+				Si queremos calcular {{#katex}}k*v{{/katex}} siendo {{#katex}}k=3{{/katex}} entonces
+				<br>
+				{{#katex}}
+				3 \dot v= 3 \dot \begin{pmatrix}
+				2\\
+				5\\
+				2
+				\end{pmatrix}= \begin{pmatrix}
+				6\\
+				15\\
+				6
+				\end{pmatrix}{{/katex}} <br>
+				<br>
+				</li>
+
+		</ul>
+
+<br>
+Ya conociendo las propiedades de los vectores, podemos entender porque todos los vectores de la forma
+{{#katex}}v=\begin{pmatrix}
+v_{x}\\
+v_{y}\\
+v_{z}
+\end{pmatrix} {{/katex}}
+<br>
+se pueden escribir como una combinación lineal (Producto por escalar y Suma de vectores) de la siguiente manera
+<br>
+<br>
+<div class="centro">
+{{#katex}}
+v=v_{x}\begin{pmatrix}
+1\\
+0\\
+0
+\end{pmatrix}
++
+v_{y}
+\begin{pmatrix}
+0\\
+1\\
+0
+\end{pmatrix}
++v_{z}
+\begin{pmatrix}
+0\\
+0\\
+1
+\end{pmatrix}= 2\begin{pmatrix}
+1\\
+0\\
+0
+\end{pmatrix}
++
+5
+\begin{pmatrix}
+0\\
+1\\
+0
+\end{pmatrix}
++2
+\begin{pmatrix}
+0\\
+0\\
+1
+\end{pmatrix}=\begin{pmatrix}
+2\\
+0\\
+0
+\end{pmatrix}
++
+
+\begin{pmatrix}
+0\\
+5\\
+0
+\end{pmatrix}
++
+\begin{pmatrix}
+0\\
+0\\
+2
+\end{pmatrix}=
+\begin{pmatrix}
+2\\
+5\\
+2
+\end{pmatrix}
+{{/katex}}
+</div>
+<br>
+<br>
+Estos tres vectores especiales
+ {{#katex}}
+\begin{pmatrix}
+1\\
+0\\
+0
+\end{pmatrix}
+,
+\begin{pmatrix}
+0\\
+1\\
+0
+\end{pmatrix}
+{{/katex}}
+y
+{{#katex}}
+\begin{pmatrix}
+0\\
+0\\
+1
+\end{pmatrix}
+{{/katex}}
+
+son conocidos como la base canonica del espacio en coordenadas cartesianas.
+<br>
+Una Base se define como el conjunto de vectores que generan un espacio, es decir que todo vector es una combinación
+lineal de los elementos de la base.
+
+<div class="centro">
+{{#katex}}
+v=v_{x}\begin{pmatrix}
+1\\
+0\\
+0
+\end{pmatrix}
++
+v_{y}
+\begin{pmatrix}
+0\\
+1\\
+0
+\end{pmatrix}
++v_{z}
+\begin{pmatrix}
+0\\
+0\\
+1
+\end{pmatrix}
+{{/katex}}
+<br>
+<br>
+o
+<br>
+<br>
+<div class="centro">
+{{#katex}}
+v=v_{x} {\hat{i}}  + v_{y} {\hat{j}} + v_{z} {\hat{k}}
+{{/katex}}
+<br>
+<br>
+El vector que se muestra en la gráfica es:
+<br>
+</div>
+<br>
+<br>
+<div id="katexfield4" class="centro">123</div>
+<br>
+<br>
+</div>
+</div>
+<div class="graphics">
+
+</div>
+</template>
+
+<template name="vecaddi">
+	<div class="graphics">
+
+	</div>
+
 </template>
