@@ -203,8 +203,24 @@ Template.matreft.rendered = function(){
 		vadd(gl.refplane.mesh.matrix.elements, centmatx.elements);
 
 		var elem=$("#reflect-matrix");
+		katex.render(" a : "+ VM.Round(a) +" "+" b : "+ VM.Round(b) +" "+" c : "+ VM.Round(c) +" ",elem.get(0));
 
-		katex.render(" a : "+ a +" "+" b : "+ b +" "+" c : "+ c +" ",elem.get(0));
+		var elem1=$("#reflect-matrix2");
+		katex.render("\\begin{pmatrix}"+
+		VM.Round(a) +"^2 (1-Cos("+VM.Round(2 * Math.PI*Math.sin(step))+"))+Cos("+
+		VM.Round(2 * Math.PI*Math.sin(step))+") & "+ VM.Round(a) +" "+ VM.Round(b) +" (1-Cos("+
+		VM.Round(2 * Math.PI*Math.sin(step))+"))-"+ VM.Round(c) +" Sin("+
+		VM.Round(2 * Math.PI*Math.sin(step))+") & "+ VM.Round(a) +" "+ VM.Round(c) +" (1-Cos("+VM.Round(2 * Math.PI*Math.sin(step))+"))-"+
+		VM.Round(b) +" Sin("+VM.Round(2 * Math.PI*Math.sin(step))+") \\\\"+
+		VM.Round(a) +" "+ VM.Round(b) +" (1-Cos("+VM.Round(2 * Math.PI*Math.sin(step))+"))-"+ VM.Round(c) +" Sin("+
+		VM.Round(2 * Math.PI*Math.sin(step))+") & "+
+		VM.Round(a) +"^2 (1-Cos("+VM.Round(2 * Math.PI*Math.sin(step))+"))+ Cos("+VM.Round(2 * Math.PI*Math.sin(step))+")	& "+ VM.Round(b) +" "+
+		VM.Round(c) +" (1-Cos("+VM.Round(2 * Math.PI*Math.sin(step))+"))-"+ VM.Round(a) +" Sin("+VM.Round(2 * Math.PI*Math.sin(step))+") \\\\"+
+		VM.Round(a) +" "+ VM.Round(c) +" (1-Cos("+VM.Round(2 * Math.PI*Math.sin(step))+"))-"+ VM.Round(b) +" Sin("+
+		VM.Round(2 * Math.PI*Math.sin(step))+") & "+ VM.Round(b) +" "+ VM.Round(c) +" (1-Cos("+VM.Round(2 * Math.PI*Math.sin(step))+"))-"+
+		VM.Round(a) +" Sin("+VM.Round(2 * Math.PI*Math.sin(step))+") & "+
+		VM.Round(a) +"^2 (1-Cos("+VM.Round(2 * Math.PI*Math.sin(step))+"))+Cos("+VM.Round(2 * Math.PI*Math.sin(step))+") \\end{pmatrix}",elem1.get(0));
+
 	}
 }
 

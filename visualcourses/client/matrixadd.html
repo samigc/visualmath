@@ -101,98 +101,98 @@
     Algunos ejemplos de cambio de coordenadas homogeneas a cartesianas son
     <ul>
       <li>{{#katex}}\begin{pmatrix}
-      4 &
-      5 &
-      2 &
-      -2
-      \end{pmatrix}
-      \sim
-      \begin{pmatrix}
-      -\frac{4}{2} &
-      -\frac{5}{2} &
-      -\frac{2}{2}
-      \end{pmatrix}=
-      \begin{pmatrix}
-      -2 &
-      -\frac{5}{2} &
-      -1
-      \end{pmatrix}{{/katex}}  </li>
-      <br>
-      <li>{{#katex}}\begin{pmatrix}
-      8 &
-      10 &
-      4 &
-      -4
-      \end{pmatrix}
-      \sim
-      \begin{pmatrix}
-      -\frac{8}{4} &
-      -\frac{10}{4} &
-      -\frac{4}{4}
-      \end{pmatrix}=\begin{pmatrix}
-      -2 &
-      -\frac{5}{2} &
-      -1
-      \end{pmatrix}{{/katex}}</li>
-    </ul>
-    <br>
-Estos ejemplos ilustran el hecho de que a varios puntos del espacio homogéneo se
-le puede asignar un solo punto.
-Estos puntos son llamados <b>puntos homogéneos</b>
+        4 &
+        5 &
+        2 &
+        -2
+        \end{pmatrix}
+        \sim
+        \begin{pmatrix}
+        -\frac{4}{2} &
+        -\frac{5}{2} &
+        -\frac{2}{2}
+        \end{pmatrix}=
+        \begin{pmatrix}
+        -2 &
+        -\frac{5}{2} &
+        -1
+        \end{pmatrix}{{/katex}}  </li>
+        <br>
+        <li>{{#katex}}\begin{pmatrix}
+          8 &
+          10 &
+          4 &
+          -4
+          \end{pmatrix}
+          \sim
+          \begin{pmatrix}
+          -\frac{8}{4} &
+          -\frac{10}{4} &
+          -\frac{4}{4}
+          \end{pmatrix}=\begin{pmatrix}
+          -2 &
+          -\frac{5}{2} &
+          -1
+          \end{pmatrix}{{/katex}}</li>
+        </ul>
+        <br>
+        Estos ejemplos ilustran el hecho de que a varios puntos del espacio homogéneo se
+        le puede asignar un solo punto.
+        Estos puntos son llamados <b>puntos homogéneos</b>
 
- <br>
-<br>
+        <br>
+        <br>
 
-    Uno de los usos fundamentales del espacio homogéneo es la traslación de objetos rigidos y
-     es descrita por la siguiente matriz <br>
-    <br>
-    {{#katex}}
-    \begin{pmatrix}
-    1 & 0 & 0 & \Delta x \\
-    0 & 1 & 0 & \Delta y \\
-    0 & 0 & 1 & \Delta z \\
-    0 & 0 & 0 & 1
-    \end{pmatrix}
-    {{/katex}}
-    <br>
-    <br>
-    Donde claramente se ve el uso de la última columna, el argumento {{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
-    es el vector cuyo origen es la posición el objeto y su destino es la posición donde queremos ubicarlo.
-    <br>
-    Si queremos aplicarlo al vector {{#katex}}v=\begin{pmatrix}
-    v_{x}\\
-    v_{y}\\
-    v_{z}\\
-    v_{w}
-    \end{pmatrix} {{/katex}}, Haremos {{#katex}} v_w=1 {{/katex}} para que las primeras
-    tres coordenadas coincidan entre los vectores 3D y 4D. <br>
-    <br>
-     Entonces realizamos
-    {{#katex}}\begin{pmatrix}
-    1 & 0 & 0 & \Delta x \\
-    0 & 1 & 0 & \Delta y \\
-    0 & 0 & 1 & \Delta z \\
-    0 & 0 & 0 & 1
-    \end{pmatrix} \begin{pmatrix}
-    v_{x}\\
-    v_{y}\\
-    v_{z}\\
-    1
-    \end{pmatrix} = \begin{pmatrix}
-    v_{x} + \Delta x \\
-    v_{y} + \Delta y \\
-    v_{z} + \Delta z \\
-    1
-    \end{pmatrix}  {{/katex}}
-    <br>
-    <br>
-    En la siguiente animación se observará la tranformación de la matriz cuyos coeficientes
-    {{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
+        Uno de los usos fundamentales del espacio homogéneo es la traslación de objetos rigidos y
+        es descrita por la siguiente matriz <br>
+        <br>
+        {{#katex}}
+        \begin{pmatrix}
+        1 & 0 & 0 & \Delta x \\
+        0 & 1 & 0 & \Delta y \\
+        0 & 0 & 1 & \Delta z \\
+        0 & 0 & 0 & 1
+        \end{pmatrix}
+        {{/katex}}
+        <br>
+        <br>
+        Donde claramente se ve el uso de la última columna, el argumento {{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
+        es el vector cuyo origen es la posición el objeto y su destino es la posición donde queremos ubicarlo.
+        <br>
+        Si queremos aplicarlo al vector {{#katex}}v=\begin{pmatrix}
+        v_{x}\\
+        v_{y}\\
+        v_{z}\\
+        v_{w}
+        \end{pmatrix} {{/katex}}, Haremos {{#katex}} v_w=1 {{/katex}} para que las primeras
+        tres coordenadas coincidan entre los vectores 3D y 4D. <br>
+        <br>
+        Entonces realizamos
+        {{#katex}}\begin{pmatrix}
+        1 & 0 & 0 & \Delta x \\
+        0 & 1 & 0 & \Delta y \\
+        0 & 0 & 1 & \Delta z \\
+        0 & 0 & 0 & 1
+        \end{pmatrix} \begin{pmatrix}
+        v_{x}\\
+        v_{y}\\
+        v_{z}\\
+        1
+        \end{pmatrix} = \begin{pmatrix}
+        v_{x} + \Delta x \\
+        v_{y} + \Delta y \\
+        v_{z} + \Delta z \\
+        1
+        \end{pmatrix}  {{/katex}}
+        <br>
+        <br>
+        En la siguiente animación se observará la tranformación de la matriz cuyos coeficientes
+        {{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
 
-    con el teclado
-    {{#katex}}\begin{pmatrix}
-    \frac{A}{D} & \frac{W}{S} & \frac{Q}{E}
-    \end{pmatrix}{{/katex}}
-  </div>
+        con el teclado
+        {{#katex}}\begin{pmatrix}
+        \frac{A}{D} & \frac{W}{S} & \frac{Q}{E}
+        \end{pmatrix}{{/katex}}
+      </div>
 
-</template>
+    </template>

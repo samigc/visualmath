@@ -3,140 +3,140 @@
 
 		La rotación es una transformación que mueve un objeto o un conjunto de puntos
 		alrededor de un eje o un vector
-	Existen matrices que rotan objetos, es decir que al multplicarla por un vector o un
-	conjunto de ellos, les cambia la dirección y el objeto resultante es el objeto rotado.
-	<br>
-	<br>
-  Los argumentos necesitados son el angulo y el eje respeco al cual el objeto va a rotar.
-	<ul>
-		<li>Vamos a ilustar lo dicho en el espacio 2D <br>
-			Si queremos rotar respecto al origen {{#katex}}\theta{{/katex}} radianes o
-			grados en sentido contrario de las manecillas del reloj, podemos usar la siguiente matriz de rotación
-			<br>
-			{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
-		  -Sin(\theta) & Cos(\theta)
-		  \end{pmatrix}{{/katex}}
-			<br>
-			<br>
-			La base del espacio tranformada genera una nueva base, y está dada por:
-			<br>
-			<br>
-			{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
-			-Sin(\theta) & Cos(\theta) \\
-			\end{pmatrix} \begin{pmatrix} 1\\ 0 \end{pmatrix}=  \begin{pmatrix} Cos(\theta)
-			\\ Sin(\theta) \end{pmatrix} {{/katex}}
-
-		<br>
-		{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
-		-Sin(\theta) & Cos(\theta)
-		\end{pmatrix} \begin{pmatrix} 0\\ 1 \end{pmatrix}=  \begin{pmatrix} -Sin(\theta)
-		\\ Cos(\theta) \end{pmatrix} {{/katex}}
-		<br>
-		Por ejemplo si queremos rotar el vector  {{#katex}}\left(
-	  \begin{array}{c}
-	  3\\
-	  -2
-	  \end{array}
-	  \right){{/katex}} , {{#katex}}\frac{\pi}{2}{{/katex}} radianes o 90 grados, realizamos
-		la siguiente operación
+		Existen matrices que rotan objetos, es decir que al multplicarla por un vector o un
+		conjunto de ellos, les cambia la dirección y el objeto resultante es el objeto rotado.
 		<br>
 		<br>
-		{{#katex}}  \begin{pmatrix}Cos(\frac{\pi}{2}) & Sin(\frac{\pi}{2}) \\
-	  -Sin(\frac{\pi}{2}) & Cos(\frac{\pi}{2})
-	  \end{pmatrix} \left(
-	  \begin{array}{c}
-	  3\\
-	  -2
-	  \end{array}
-	  \right)= \begin{pmatrix} 0 & 1 \\
-	  -1 & 0
-	  \end{pmatrix} \left(
-	  \begin{array}{c}
-	  3\\
-	  -2
-	  \end{array}
-	  \right)= \begin{array}{c}
-	  -2\\
-	  -3
-	  \end{array}
-	  \right){{/katex}}
-		<br>
-		<br>
-		En la siguiente animación con las teclas AD obtenemos la rotación del cubo,
-		el ángulo que se muestra en la matriz.
+		Los argumentos necesitados son el angulo y el eje respeco al cual el objeto va a rotar.
+		<ul>
+			<li>Vamos a ilustar lo dicho en el espacio 2D <br>
+				Si queremos rotar respecto al origen {{#katex}}\theta{{/katex}} radianes o
+				grados en sentido contrario de las manecillas del reloj, podemos usar la siguiente matriz de rotación
+				<br>
+				{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
+				-Sin(\theta) & Cos(\theta)
+				\end{pmatrix}{{/katex}}
+				<br>
+				<br>
+				La base del espacio tranformada genera una nueva base, y está dada por:
+				<br>
+				<br>
+				{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
+				-Sin(\theta) & Cos(\theta) \\
+				\end{pmatrix} \begin{pmatrix} 1\\ 0 \end{pmatrix}=  \begin{pmatrix} Cos(\theta)
+				\\ Sin(\theta) \end{pmatrix} {{/katex}}
 
-		</li>
-	</ul>
-</div>
-	        <div id="controls">
-	                Rotation of a cube using linear transformations
-	                <div id="rotate-matrix">
-	                </div>
-	                <div id ="button">
-	                        <a id="z-button" title="z-button">z-lock</a>
-	                </div>
-	        </div>
-	        <div id="top">
-	        </div>
+				<br>
+				{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
+				-Sin(\theta) & Cos(\theta)
+				\end{pmatrix} \begin{pmatrix} 0\\ 1 \end{pmatrix}=  \begin{pmatrix} -Sin(\theta)
+				\\ Cos(\theta) \end{pmatrix} {{/katex}}
+				<br>
+				Por ejemplo si queremos rotar el vector  {{#katex}}\left(
+				\begin{array}{c}
+				3\\
+				-2
+				\end{array}
+				\right){{/katex}} , {{#katex}}\frac{\pi}{2}{{/katex}} radianes o 90 grados, realizamos
+				la siguiente operación
+				<br>
+				<br>
+				{{#katex}}  \begin{pmatrix}Cos(\frac{\pi}{2}) & Sin(\frac{\pi}{2}) \\
+				-Sin(\frac{\pi}{2}) & Cos(\frac{\pi}{2})
+				\end{pmatrix} \left(
+				\begin{array}{c}
+				3\\
+				-2
+				\end{array}
+				\right)= \begin{pmatrix} 0 & 1 \\
+				-1 & 0
+				\end{pmatrix} \left(
+				\begin{array}{c}
+				3\\
+				-2
+				\end{array}
+				\right)= \begin{array}{c}
+				-2\\
+				-3
+				\end{array}
+				\right){{/katex}}
+				<br>
+				<br>
+				En la siguiente animación con las teclas AD obtenemos la rotación del cubo,
+				el ángulo que se muestra en la matriz.
 
-					<div class="pure-u-1-1">
-						<div class="texto merry">
-							<ul>
-								<li>En el espacio 3D podemos rotar un objeto alrededor de los ejes X, Y, Z con la siguientes transformaciones <br>
-								<ul>
-									<li>Alrededor del eje X <br>
-										{{#katex}} R_X=\begin{pmatrix}
-										1& 0 & 0 \\
-										0 & Cos(\theta) & Sin(\theta) \\
-									  0&-Sin(\theta) & Cos(\theta)
-									  \end{pmatrix}{{/katex}}
-										<br>
-										<br>
-									</li>
-									<li>Alrededor del eje Y <br>
-										{{#katex}} R_Y=\begin{pmatrix}
-										Cos(\theta)& 0 & Sin(\theta) \\
-										0 & 1 & 0 \\
-										-Sin(\theta)& 0 & Cos(\theta)
-										\end{pmatrix}{{/katex}}
-										<br>
-										<br>
-									</li>
+			</li>
+		</ul>
+	</div>
+	<div id="controls">
+		Rotation of a cube using linear transformations
+		<div id="rotate-matrix">
+		</div>
+		<div id ="button">
+			<a id="z-button" title="z-button">z-lock</a>
+		</div>
+	</div>
+	<div id="top">
+	</div>
 
-									<li>Alrededor del eje Z <br>
-										{{#katex}} R_Z=\begin{pmatrix}
-										Cos(\theta) & Sin(\theta) & 0 \\
-										-Sin(\theta) & Cos(\theta)	&0 \\
-										0 & 0 & 1
-										\end{pmatrix}{{/katex}}
-										<br>
-										<br>
-										Así que si primero queremos rotar respecto al eje x, luego
-										respecto al eje y respecto al eje z , la matriz de transformación será {{#katex}} R_Z \cdot R_Y \cdot R_X{{/katex}}
-									</li>
-								</ul>
-								</li>
-								<li>En el espacio 3D podemos rotar un objeto alrededor de un vector
-								{{#katex}} 	\begin{pmatrix}x & y & z \end{pmatrix}  {{/katex}}
+	<div class="pure-u-1-1">
+		<div class="texto merry">
+			<ul>
+				<li>En el espacio 3D podemos rotar un objeto alrededor de los ejes X, Y, Z con la siguientes transformaciones <br>
+					<ul>
+						<li>Alrededor del eje X <br>
+							{{#katex}} R_X=\begin{pmatrix}
+							1& 0 & 0 \\
+							0 & Cos(\theta) & Sin(\theta) \\
+							0&-Sin(\theta) & Cos(\theta)
+							\end{pmatrix}{{/katex}}
+							<br>
+							<br>
+						</li>
+						<li>Alrededor del eje Y <br>
+							{{#katex}} R_Y=\begin{pmatrix}
+							Cos(\theta)& 0 & Sin(\theta) \\
+							0 & 1 & 0 \\
+							-Sin(\theta)& 0 & Cos(\theta)
+							\end{pmatrix}{{/katex}}
+							<br>
+							<br>
+						</li>
 
-									 arbitrario normalizado (cuya longitud sea de uno) con la siguiente matriz <br> <br>
-									{{#katex}} \begin{pmatrix}
-									x^2 (1-Cos(\theta))+Cos(Theta) & x y (1-Cos(\theta))-z Sin(Theta) & x z (1-Cos(\theta))-y Sin(Theta) \\
-									x y (1-Cos(\theta))-z Sin(Theta) & x^2 (1-Cos(\theta))+ Cos(Theta)	& y z (1-Cos(\theta))-x Sin(Theta) \\
-									x z (1-Cos(\theta))-y Sin(Theta) & y z (1-Cos(\theta))-x Sin(Theta) & x^2 (1-Cos(\theta))+Cos(Theta)
-									\end{pmatrix}{{/katex}}
-									<br>
-									<br>
-									En la siguiente animación se puede manipular el vector
-										{{#katex}} 	\begin{pmatrix}x & y & z \end{pmatrix}  {{/katex}}
+						<li>Alrededor del eje Z <br>
+							{{#katex}} R_Z=\begin{pmatrix}
+							Cos(\theta) & Sin(\theta) & 0 \\
+							-Sin(\theta) & Cos(\theta)	&0 \\
+							0 & 0 & 1
+							\end{pmatrix}{{/katex}}
+							<br>
+							<br>
+							Así que si primero queremos rotar respecto al eje x, luego
+							respecto al eje y respecto al eje z , la matriz de transformación será {{#katex}} R_Z \cdot R_Y \cdot R_X{{/katex}}
+						</li>
+					</ul>
+				</li>
+				<li>En el espacio 3D podemos rotar un objeto alrededor de un vector
+					{{#katex}} 	\begin{pmatrix}x & y & z \end{pmatrix}  {{/katex}}
 
-									con el teclado
-									{{#katex}}\begin{pmatrix}
-									\frac{A}{D} & \frac{W}{S} & \frac{Q}{E}
-									\end{pmatrix}{{/katex}}
-								</li>
-							</ul>
+					arbitrario normalizado (cuya longitud sea de uno) con la siguiente matriz <br> <br>
+					{{#katex}} \begin{pmatrix}
+					x^2 (1-Cos(\theta))+Cos(\theta) & x y (1-Cos(\theta))-z Sin(\theta) & x z (1-Cos(\theta))-y Sin(\theta) \\
+					x y (1-Cos(\theta))-z Sin(\theta) & x^2 (1-Cos(\theta))+ Cos(\theta)	& y z (1-Cos(\theta))-x Sin(\theta) \\
+					x z (1-Cos(\theta))-y Sin(\theta) & y z (1-Cos(\theta))-x Sin(\theta) & x^2 (1-Cos(\theta))+Cos(\theta)
+					\end{pmatrix}{{/katex}}
+					<br>
+					<br>
+					En la siguiente animación se puede manipular el vector
+					{{#katex}} 	\begin{pmatrix}x & y & z \end{pmatrix}  {{/katex}}
 
-						</div>
-					</div>
+					con el teclado
+					{{#katex}}\begin{pmatrix}
+					\frac{A}{D} & \frac{W}{S} & \frac{Q}{E}
+					\end{pmatrix}{{/katex}}
+				</li>
+			</ul>
+
+		</div>
+	</div>
 </template>

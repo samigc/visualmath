@@ -1,22 +1,64 @@
 <template name="matscat">
 	<div id="controls">
-		Escalamiento<br>
-		<div class="pure-u-1-1 merry texto">
+		<h1>Escalamiento</h1><br>
+		<div class="pure-u-1-1 merry texto centro">
 			<br>
 			El escalamiento es una transformación que solo modifica la longitud de
 			los vectores, es decir la distancia desde el origen hasta los puntos que definen el objeto,
 			preservando los angulos y por lo tanto las proporciones.
-			 <br>
-			Esta tranformación es sencillamente la multiplicación por escalar, si la Base inicial es
+			<br>
+			<br>
+			Esta tranformación es sencillamente la multiplicación de un escalar {{#katex}}k{{/katex}} por la matriz formada con los vectores de la base.
+			<br>
+			<ul>
+				<li>Si {{#katex}} k &lt; 1{{/katex}} el escalamiento es una reducción </li>
+				<li>Si {{#katex}}k &gt; 1{{/katex}}, el escalamiento es un agrandamiento</li>
+				<li> Si {{#katex}}k=1{{/katex}} el escalamiento no modifica nada</li>
+			</ul>
+			<br>
+			Si estamos trabajando con la base canónica, entonces la matriz es la identidad
+			y la matriz de transformación sería
+			<br>
+			<br>
+			{{#katex}}k \begin{pmatrix}
+			1 & 0 & 0  \\
+			0 & 1 & 0  \\
+			0 & 0 & 1
+			\end{pmatrix} =\begin{pmatrix}
+			k & 0 & 0  \\
+			0 & k & 0  \\
+			0 & 0 & k
+			\end{pmatrix}
+			{{/katex}}
+			<br>
+			<br>
+			En la animación se puede modificar el factor de escalamiento {{#katex}}k{{/katex}} con
+			las teclas AD.
+		</div>
+		<div class="centro" id="scale-matrix">
+		</div>
 
-		</div>
-		<div id="scale-matrix">
-		</div>
+
+		<br><br>
 		<div id ="button">
 			<a id="z-button" title="z-button">z-lock</a>
 		</div>
 	</div>
 
 	<div id="top">
+	</div>
+	<div class="pure-u-1-1 merry texto centro">
+		Si se quiere escalar hacia una dirección específica, podemos dar como argumento un vector normal
+		{{#katex}}n=(n_x, n_y, n_z){{/katex}} y el factor de escalamiento {{#katex}}k{{/katex}} a la siguiente
+		matriz de tranformación
+		<br>
+		<br>
+		{{#katex}}
+		\begin{pmatrix}
+		1+(k-1) n_x ^2 & (k-1)n_x n_y & (k-1)n_x n_z  \\
+		(k-1)n_x n_y & 1+(k-1) n_y ^2 & (k-1)n_y n_z   \\
+		(k-1)n_x n_z & (k-1)n_y n_z  & 1+(k-1) n_z ^2
+		\end{pmatrix}
+		{{/katex}}
 	</div>
 </template>

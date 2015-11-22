@@ -1,58 +1,58 @@
 <template name="mattrat">
-<div class="pure-u-1-1 merry texto">
-	<h1>Traslación</h1>
-	<br>
-	Uno de los usos fundamentales del espacio homogéneo es la traslación de objetos rigidos y
-	es descrita por la siguiente matriz <br>
-	<br>
-	{{#katex}}
-	\begin{pmatrix}
-	1 & 0 & 0 & \Delta x \\
-	0 & 1 & 0 & \Delta y \\
-	0 & 0 & 1 & \Delta z \\
-	0 & 0 & 0 & 1
-	\end{pmatrix}
-	{{/katex}}
-	<br>
-	<br>
-	Donde el argumento {{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
-	es el vector cuyo origen es la posición el objeto y su destino es la posición donde queremos ubicarlo.
-	<br>
-	Si queremos aplicarlo al vector {{#katex}}v=\begin{pmatrix}
-	v_{x}\\
-	v_{y}\\
-	v_{z}\\
-	v_{w}
-	\end{pmatrix} {{/katex}}, Haremos {{#katex}} v_w=1 {{/katex}} para que las primeras
-	tres coordenadas coincidan entre los vectores 3D y 4D. <br>
-	<br>
-	Entonces realizamos
-	{{#katex}}\begin{pmatrix}
-	1 & 0 & 0 & \Delta x \\
-	0 & 1 & 0 & \Delta y \\
-	0 & 0 & 1 & \Delta z \\
-	0 & 0 & 0 & 1
-	\end{pmatrix} \begin{pmatrix}
-	v_{x}\\
-	v_{y}\\
-	v_{z}\\
-	1
-	\end{pmatrix} = \begin{pmatrix}
-	v_{x} + \Delta x \\
-	v_{y} + \Delta y \\
-	v_{z} + \Delta z \\
-	1
-	\end{pmatrix}  {{/katex}}
-	<br>
-	<br>
-	En la siguiente animación se observará la tranformación de la matriz cuyos coeficientes
-	{{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
+	<div class="pure-u-1-1 merry texto">
+		<h1>Traslación</h1>
+		<br>
+		Uno de los usos fundamentales del espacio homogéneo es la traslación de objetos rigidos y
+		es descrita por la siguiente matriz <br>
+		<br>
+		{{#katex}}
+		\begin{pmatrix}
+		1 & 0 & 0 & \Delta x \\
+		0 & 1 & 0 & \Delta y \\
+		0 & 0 & 1 & \Delta z \\
+		0 & 0 & 0 & 1
+		\end{pmatrix}
+		{{/katex}}
+		<br>
+		<br>
+		Donde el argumento {{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
+		es el vector cuyo origen es la posición el objeto y su destino es la posición donde queremos ubicarlo.
+		<br>
+		Si queremos aplicarlo al vector {{#katex}}v=\begin{pmatrix}
+		v_{x}\\
+		v_{y}\\
+		v_{z}\\
+		v_{w}
+		\end{pmatrix} {{/katex}}, Haremos {{#katex}} v_w=1 {{/katex}} para que las primeras
+		tres coordenadas coincidan entre los vectores 3D y 4D. <br>
+		<br>
+		Entonces realizamos
+		{{#katex}}\begin{pmatrix}
+		1 & 0 & 0 & \Delta x \\
+		0 & 1 & 0 & \Delta y \\
+		0 & 0 & 1 & \Delta z \\
+		0 & 0 & 0 & 1
+		\end{pmatrix} \begin{pmatrix}
+		v_{x}\\
+		v_{y}\\
+		v_{z}\\
+		1
+		\end{pmatrix} = \begin{pmatrix}
+		v_{x} + \Delta x \\
+		v_{y} + \Delta y \\
+		v_{z} + \Delta z \\
+		1
+		\end{pmatrix}  {{/katex}}
+		<br>
+		<br>
+		En la siguiente animación se observará la tranformación de la matriz cuyos coeficientes
+		{{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
 
-	con el teclado
-	{{#katex}}\begin{pmatrix}
-	\frac{A}{D} & \frac{W}{S} & \frac{Q}{E}
-	\end{pmatrix}{{/katex}}
-</div>
+		con el teclado
+		{{#katex}}\begin{pmatrix}
+		\frac{A}{D} & \frac{W}{S} & \frac{Q}{E}
+		\end{pmatrix}{{/katex}}
+	</div>
 	<div id="controls">
 		Vector de traslación<br>
 		<div id="translate-matrix" style="margin:5px;padding:5px;">
