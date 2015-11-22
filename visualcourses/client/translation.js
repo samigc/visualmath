@@ -150,7 +150,11 @@ Template.mattrat.rendered = function(){
 
 		var elem=$("#translate-matrix");
 
-		katex.render("( x : "+ x +",  y : "+ y +" , z :  "+z+")",elem.get(0));
+		katex.render("( \\Delta x : "+ x +", \\Delta y : "+ y +" , \\Delta z : "+ z +" ) ",elem.get(0));
+
+		var elem1 =$("#translate-matrix2");
+	katex.render("\\begin{pmatrix} 1 & 0 & 0 &"+x +"\\\\	0 & 1 & 0 &"+
+	y +"\\\\	0 & 0 & 1 &"+z +"\\\\	0 &0 & 0 & 1	\\end{pmatrix}",elem1.get(0));
 	}
 }
 
