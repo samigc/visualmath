@@ -1,0 +1,12 @@
+input.matrixinput {
+	width : 55px;
+	padding : 4px;
+	margin : 2px;
+}
+
+input.matrixinput4 {
+	width : 37px;
+	padding : 2px;
+	margin : 1px;
+	font-size: 10px;
+}

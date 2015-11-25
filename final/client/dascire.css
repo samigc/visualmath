@@ -1,0 +1,58 @@
+/* CSS declarations go here */
+.dascirelogo {
+	margin: 0  !important;
+	padding : 0px 10px 0px 10px !important;
+
+}
+
+.rainbowFast {
+        -webkit-animation: rainbow-animation 4s infinite;
+}
+
+.dascirelogoimg {
+  -webkit-animation: filter-animation 10s infinite;
+}
+
+@-webkit-keyframes filter-animation {
+  0% {
+    -webkit-filter: brightness(2) hue-rotate(0deg);
+  }
+
+  25% {
+    -webkit-filter: brightness(2) hue-rotate(30deg);
+  }
+
+  50% {
+    -webkit-filter: brightness(2) hue-rotate(360deg);
+  }
+
+  75% {
+    -webkit-filter: brightness(2) hue-rotate(270deg);
+  }
+
+  100% {
+    -webkit-filter: brightness(2) hue-rotate(0deg);
+  }
+}
+
+@-webkit-keyframes rainbow-animation {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  25% {
+    -webkit-filter: hue-rotate(30deg);
+  }
+
+  50% {
+    -webkit-filter: hue-rotate(360deg);
+  }
+
+  75% {
+    -webkit-filter: hue-rotate(270deg);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+}

@@ -1,0 +1,120 @@
+<head>
+  <title>Visual Math</title>
+  <script src="/scripts/three.js"></script>
+<script src="/scripts/threex.js"></script>
+<script src="/scripts/tween.min.js"></script>
+<script src="/scripts/zTrackballControls.js"></script>
+<script src="/scripts/threex.domevents.js"></script>
+<script src="/scripts/threex.keyboardstate.js"></script>
+<script src="/scripts/zAller_Regular.js"></script>
+<script src="/scripts/Please-compressed.js"></script>
+<script src="/scripts/visualMath.js"></script>
+</head>
+
+<template name="home">
+  {{> sitemenu}}
+
+  {{> sitebody}}
+</template>
+
+<template name="sitebody">
+  <div class="divider"></div>
+  <div class="ui container page">
+    <div class="ui row">
+      <div class="column">
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="sitemenu">
+  <div class="ui menu inverted sitemenutemplate">
+          <div class="ui container">
+        <div class="header item dascirelogo">
+                <!--a class="blankfilter" href="/">
+                        <img class ="dascirelogoimg" alt="Dascire" src="/logo.png" style="max-height: 35px;"></a>-->
+        </div>
+        <a class="item" href="/smart">
+
+        </a>
+        <a class="item" href="/simulacro">
+
+        </a>
+        <a class="item" href ="/vm">
+        <object type="image/svg+xml" data="/infinite3.svg" class="ui image vmlogo vmlogoheader" id="vmsvg"></object> Visual Math
+        </a>
+        <!--div class="right menu">
+          {{> navbarlogin}}
+          <a class="item" href="/contact">
+            Contactanos
+          </a>
+  </div-->
+        </div>
+  </div>
+</template>
+
+<template name="notFound">
+
+        Esta pagina no existe, lo lamentamos mucho :(
+        <br>
+</template>
+
+<template name="smart">
+{{> sitemenu}}
+</template>
+
+<template name="simulacro">
+{{> sitemenu}}
+hola
+<div id="vmcontainer">
+
+</div>
+<div class="ui vertical center aligned segment">
+ Conoce lo que dascire tiene para ti.
+ <div class="ui header container">
+         Preparate para tus examenes de estado , completamente gratis!
+ </div>
+</div>
+
+</template>
+<template name="contact">
+        {{>sitemenu}}
+
+        <div class="ui center aligned segment">
+                <div class="ui inverted header green">
+                        Contactanos
+                </div>
+                <div class="ui raised segment">
+                        En dascire estamos felices de hablar contigo, cuentanos en que te podemos ayudar, expresanos tu interes por la educacion , las matematicas o la tecnologia, contactanos!
+                </div>
+        </div>
+</template>
+
+<template name="loginpage">
+  {{> sitemenu}}
+  <div class="ui divider"></div>
+  <div class="ui grid">
+    <div class="four wide centered column">
+      {{> atForm}}
+    </div>
+  </div>
+</template>
+<!--Here implement the breadcrumb
+when profiles are completed><-->
+<template name="navbarlogin">
+  {{#if currentUser}}
+  <a href="/profile" class="item">
+    {{#with currentUser}}
+    {{email}}
+    {{/with}}
+  </a>
+  <a href="/login" class="item logout">
+    Salir
+  </a>
+  {{else}}
+  <a href="/login" class="item">
+    Registrarse  / Ingresar
+  </a>
+  {{/if}}
+</template>

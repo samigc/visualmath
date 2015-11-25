@@ -1,0 +1,61 @@
+<template name="visualmath">
+	{{> sitemenu}}
+	<div id="vmcontainer">
+		<div class="ui center aligned huge header">
+			<img class="ui image vmlogo" src="/infinite3.svg">
+			<br>
+			Visual Math
+			<div class="sub header">Visualising math is <b>understanding</b> math</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="ui horizontal divider"></div>
+	<div id="vmcontainer2" class="ui text container">
+		<div class="ui basic segment">
+			<i>“The world is complex, dynamic, multidimensional: the paper is static, flat.
+				How are we to represent the rich visual world of experience and measurement on mere flatland?"</i>
+
+
+
+				<div class="ui right aligned basic segment">
+					- <b> Edward R. Tufte</b><i>: Envisioning Information</i>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="ui very padded equal width grid">
+			<div class="centered very padded column">
+				<h2 class="ui header centered">What is Visual Math ? </h2>
+				<div class="ui basic segment right aligned">
+					<p><b>Visual Math</b> takes a visual and constructive approach to learning and teaching math </p>
+					<p>
+						<b>Visual Math</b> contains graphical tools to visualize fundamental concepts of linear algebra. <b>Visual Math</b> shows the relationship
+						between <i>analytical expressions</i> and their <i>geometric interpretation</i>.
+					</p>
+				</div>
+
+			</div>
+			<div class="centered very padded column">
+				<div class="ui basic segment centered aligned">
+					<p> </p>
+					<div class="ui large">
+						{{#katex}}
+
+						{{/katex}}
+					</div>
+					<br>
+				</div>
+				<div class="ui basic segment centered aligned">
+					<button class="huge ui button green" id="vmbutton">
+  						Get Started , Learn math like you have never done before!
+					</button>
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</template>

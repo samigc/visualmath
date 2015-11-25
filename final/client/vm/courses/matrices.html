@@ -1,0 +1,334 @@
+<template name="addformm">
+	<form class="matrixinput ui fluid input">
+		<table class="ui teal table">
+			<thead>
+				<tr><th>x</th>
+					<th>y</th>
+					<th>z</th>
+				</tr></thead><tbody>
+					<tr>
+						<td><input type="text" name="a11" class="matrixinput"></td>
+						<td><input type="text" name="a12" class="matrixinput"></td>
+						<td><input type="text" name="a13" class="matrixinput"> </td>
+					</tr>
+					<tr>
+						<td><input type="text" name="a21" class="matrixinput"></td>
+						<td><input type="text" name="a22" class="matrixinput"></td>
+						<td><input type="text" name="a23" class="matrixinput"></td>
+					</tr>
+					<tr>
+						<td><input type="text" name="a31" class="matrixinput"></td>
+						<td><input type="text" name="a32" class="matrixinput"></td>
+						<td><input type="text" name="a33" class="matrixinput"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="center aligned"><input type="submit" name="submit" value="&#10003;"></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table><br>
+
+
+		</form>
+
+	</template>
+
+	<template name="vmmatricesc">
+		{{> vmmenu}}
+		<div class="ui very padded" id="vmcontainer">
+
+			<div class="ui card teal vecUI" style="position : fixed; top : 50px; left : 40px ; z-index: 9; opacity:0">
+				<div class="content">
+					<div class="header">Transformacion con Matrices</div>
+					<div class="meta">Introduzca la matriz de transformación que quiere aplicar al objeto mostrado en la animación. <br>
+						{{> addformm}}
+					</div>
+
+					<div class="description">
+						<div id="katexfield5" class="katexbig">
+
+						</div>
+					</div>
+				</div>
+				<div class="extra content">
+					Se aplicara la transformacion de acorde a la matriz ingresada.
+				</div>
+			</div>
+			<div id="explanation">
+				<div class = "ui very padded basic container segment center aligned ">
+					<div class="ui icon header very big">
+						<h1>Matrices</h1>
+					</div>
+					<h3>
+						Una matriz es un arreglo de números en un cuadrado, por ejemplo:
+						<br>
+						<div class="ui segment center aligned raised violet">
+							{{#katex}}\begin{pmatrix}1 & 2 & 3\\
+							-5 & 4 & 8\\
+							3 & 2 & -3
+							\end{pmatrix}{{/katex}}
+						</div>
+						<br>
+						<br>
+						Que puede ser vista como un arreglo de tres filas y tres columnas,
+						cada una de ellas es un vector que representa una flecha en el espacio cartesiano
+						<br>
+						<br>
+					</h3>
+					<div class="ui two column doubling stackable grid container">
+						<div class = "ui column">
+							<div class="ui three cards">
+								<div class="card yellow rainbowFast">
+									<div class="image katexm margin10 ">
+										{{#katex}} = \begin{pmatrix}1 & 2 & 3 \end{pmatrix}{{/katex}}
+									</div>
+									<div class="middle aligned content">
+										<br>
+										<a class="description">Fila 1</a>
+									</div>
+								</div>
+								<div class="card blue rainbowFast">
+									<div class="image katexm margin10">
+										{{#katex}} = \begin{pmatrix}-5 & 4 & 8 \end{pmatrix}{{/katex}}
+									</div>
+									<div class="middle aligned content">
+										<br>
+										<a class="description">Fila 2</a>
+									</div>
+
+								</div>
+
+								<div class="card red rainbowFast">
+									<div class="image katexm margin10">
+										{{#katex}} = \begin{pmatrix}3 & 2 & -3 \end{pmatrix}{{/katex}}
+									</div>
+									<div class="middle aligned content">
+										<br>
+										<a class="description">Fila 3 </a>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class = "ui column">
+							<div class="ui items">
+								<div class="item">
+
+									<div class="middle aligned content">
+										<br>
+										<a class="header">Columna 1</a>
+									</div>
+									<div class="image">
+										{{#katex}}=\left(
+										\begin{array}{c}
+										1\\
+										-5\\
+										3
+										\end{array}
+										\right){{/katex}}
+									</div>
+								</div>
+								<div class="item">
+
+									<div class="middle aligned content">
+										<br>
+										<a class="header">Columna 2</a>
+									</div>
+									<div class="image">
+										{{#katex}}=\left(
+										\begin{array}{c}
+										2\\
+										4\\
+										2
+										\end{array}
+										\right){{/katex}}
+									</div>
+								</div>
+
+								<div class="item">
+									<div class="middle aligned content">
+										<br>
+										<a class="header">Columna 3 </a>
+									</div>
+									<div class="image">
+										{{#katex}}=
+										\left(
+										\begin{array}{c}
+										3\\
+										8\\
+										-3
+										\end{array}
+										\right){{/katex}}
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+					<h3>Una matriz es llamada una<b> transformación </b>porque puede escalar, deformar, rotar,
+						reflejar,trasladar y proyectar un vector, y por lo tanto cualquier objeto formado por curvas, lineas, planos, etc.
+						<br><br>
+
+						Las dimensiones de una matriz son  : <i>número de filas</i> &#215;
+						<i>número de columnas</i> <br>La posición de un elemento es llamado con dos coordenadas,
+						la primera es la fila y la segunda es la columna.
+						<br>
+						<br>
+					</h3>
+					<div class="ui horizontal divider"> Aplicar transformacion al vector
+					</div>
+					<h3>
+						Para aplicar la transformación a un vector {{#katex}}v=\begin{pmatrix} v_{x}\\ v_{y} \\ v_{z} \end{pmatrix}{{/katex}},
+						Debemos simplemente multiplicar la matriz por el vector.
+						<br>
+						<br>
+						<div class="ui raised centered segment katexm blue">
+							{{#katex}}\begin{pmatrix}1 & 2 & 3\\
+							-5 & 4 & 8\\
+							3 & 2 & -3
+							\end{pmatrix} \begin{pmatrix} v_{x}\\ v_{y} \\ v_{z} \end{pmatrix} {{/katex}},<br> <br>
+							Que es equivalente a
+							<br>
+							<br>
+							{{#katex}} \begin{pmatrix}1 v_{x} + 2 v_{y} + 3 v_{z}\\
+							-5 v_{x} + 4 v_{y} + 8 v_{z}\\
+							3 v_{x} + 2 v_{y} + -3 v_{z}
+							\end{pmatrix}{{/katex}}
+						</div>
+						<br>
+						en el caso concreto en el que {{#katex}}v=\begin{pmatrix} 8\\ 3\\ 4 \end{pmatrix} {{/katex}}
+						<br>
+						<br>
+						<div class="ui raised centered segment katexm red">
+							{{#katex}}\begin{pmatrix}1 & 2 & 3\\
+							-5 & 4 & 8\\
+							3 & 2 & -3
+							\end{pmatrix} \begin{pmatrix} v_{x}\\ v_{y} \\ v_{z} \end{pmatrix} {{/katex}},<br> <br>
+							Que es equivalente a
+							<br>
+							<br>
+							{{#katex}}\begin{pmatrix}1 & 2 & 3\\
+							-5 & 4 & 8\\
+							3 & 2 & -3
+							\end{pmatrix} \begin{pmatrix} 8\\ 3 \\ 4 \end{pmatrix}= \begin{pmatrix} -1\\ 1 \\ -3 \end{pmatrix} {{/katex}}
+						</div>
+
+					</h3>
+
+					<h3>
+						<br>
+						Que es un vector y representa una flecha desde el origen a la coordenada {{#katex}} (-1,1,-3) {{/katex}}.
+						<br>
+						Para saber como es la transformación aplicada a todo el espacio, podemos mirar como la base es transformada.
+						<br>
+						Y si los vectores de la base transformados resultan ser vectores linealmente independientes (Que no sean escalamientos mutuos)
+						y puedan ser normalizados. (Véase Distancia)
+						<br>
+						Entonces tendremos los vectores de la base del espacio transformado.
+						<br>
+						<br>
+						En este caso tomaremos la base canónica del espacio inicial y le aplicaremos la transformación asociada a la matriz anterior.
+					</h3>
+					<div class="ui very relaxed grid center aligned">
+						<div class="column five wide">
+							<div class="ui raised center aligned segment green">
+								<h2>
+									Base canónica:
+								</h2>
+								<br>
+								<div class="katexmid">
+									{{#katex}} \begin{pmatrix} 1\\ 0 \\ 0 \end{pmatrix}{{/katex}},
+									{{#katex}} \begin{pmatrix} 0\\ 1 \\ 0 \end{pmatrix}{{/katex}},
+									{{#katex}} \begin{pmatrix} 0\\ 0 \\ 1 \end{pmatrix}{{/katex}}.
+								</div>
+
+							</div>
+						</div>
+						<div class="column seven wide">
+							<div class="ui raised center aligned segment green">
+								<h2> Asi : </h2>
+								<div class="katexmid">
+									<ul>
+										<li>{{#katex}} \begin{pmatrix}1 & 2 & 3\\
+											-5 & 4 & 8\\
+											3 & 2 & -3
+											\end{pmatrix} \begin{pmatrix} 1\\ 0 \\ 0 \end{pmatrix}= \begin{pmatrix}1 \\ -5 \\ 3 \end{pmatrix}{{/katex}}
+										</li> <br>
+										<li>{{#katex}} \begin{pmatrix}1 & 2 & 3\\
+											-5 & 4 & 8\\
+											3 & 2 & -3
+											\end{pmatrix} \begin{pmatrix} 0\\ 1 \\ 0 \end{pmatrix}= \begin{pmatrix}2 \\ 4 \\ 2 \end{pmatrix}{{/katex}}
+										</li> <br>
+										<li>{{#katex}} \begin{pmatrix}1 & 2 & 3\\
+											-5 & 4 & 8\\
+											3 & 2 & -3
+											\end{pmatrix} \begin{pmatrix} 0\\ 0 \\ 1 \end{pmatrix}= \begin{pmatrix}3 \\ 8 \\ -3 \end{pmatrix}{{/katex}}
+										</li> <br>
+
+									</ul>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<h3>
+						Si la dimensión de la matriz es <i>m</i> &#215;<i>n</i> ,
+						la transformación envía de un espacio de dimensión {{#katex}}n{{/katex}} a un espacio de dimension {{#katex}}m{{/katex}},
+						en términos matemáticos, una matriz {{#katex}}m{{/katex}}&#215;{{#katex}}n{{/katex}} multiplicado por un <i>n</i>-vector
+						resulta ser un <i>m</i>-vector.
+						<br>
+						<br>
+						Esto explica porque
+						<br>
+						<ul><li>Una matriz 2 &#215; 2 envía del espacio 2 dimensional al mismo espacio</li><br>
+							<li> Una matriz 3 &#215; 2 envía del espacio 3 dimensional al 2 dimensional.</li><br>
+						</ul></h3>
+
+						<div class="ui horizontal divider"> Transformaciones Encadenadas
+						</div>
+
+						<h3>Para aplicar varias tranformaciones al objeto y/o conjunto de vectores,
+							por ejemplo, queremos aplicar al vector
+							{{#katex}} \begin{pmatrix}
+							x\\
+							y\\
+							z
+							\end{pmatrix}
+							{{/katex}}
+							<br>
+							<br>
+							una Rotación por medio de la matriz {{#katex}}R{{/katex}}
+							y luego escalarlo por medio la matriz {{#katex}}S{{/katex}},
+							<br>
+							Se realiza
+
+
+							<div class="ui raised center aligned segment green">
+								{{#katex}}S(R \begin{pmatrix}
+								x\\
+								y\\
+								z
+								\end{pmatrix}) {{/katex}}
+								equivalente a {{#katex}}(S R)\begin{pmatrix}
+								x\\
+								y\\
+								z
+								\end{pmatrix}{{/katex}}.
+							</div>
+							<br>
+							Es decir que la matriz {{#katex}}(S R){{/katex}} es la matriz que rota y escala simultáneamente.</h3>
+						</div>
+					</div>
+
+					<br>
+
+					<br>
+					<br>
+
+					<br>
+				</div>
+			</template>

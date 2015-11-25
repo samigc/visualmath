@@ -1,0 +1,449 @@
+<template name="vmlinearity">
+	{{> vmmenu}}
+	<div class="ui very padded" id="vmcontainer">
+
+		<!-- scn 1 visible class f1 -->
+		<div class="ui card f2 vecUI f2ui" style="position : fixed; top : 300px; left : 40px ; z-index: -9; opacity:0">
+			<div class="content">
+				<div class="header">Suma de Vectores</div>
+				<div class="meta">Clickee la cabeza de un vector para cambiarlo <br>
+				<b> Vector seleccionado : </b> <div id="katexfield2" class="katexsm">
+
+				</div>
+				</div>
+
+				<div class="description">
+					<div id="katexfield3" class="katexsm">
+
+					</div>
+				</div>
+			</div>
+			<div class="extra content">
+				Instrucciones :<br>
+				Utiliza las teclas <b>a , s , d , w , q , e </b> <br>
+				Para cambiar la magnitud de los <br>
+				componentes del vector.
+			</div>
+		</div>
+		<div class="ui card f1 vecUI f1ui" style="position : fixed; top : 300px; left : 40px ; z-index: -9; opacity:0">
+			<div class="content">
+				<div class="header">Base Canonica</div>
+				<div class="meta">Modifique la base para crear un vector</div>
+				<div class="description">
+					<div id="katexfield4" class="katexxs">
+
+					</div>
+				</div>
+			</div>
+			<div class="extra content">
+				Instrucciones :<br>
+				Utiliza las teclas <b>a , s , d , w , q , e </b> <br>
+				Para cambiar la magnitud de los <br>
+				componentes del vector.
+			</div>
+		</div>
+		<div id="explanation">
+			<div class="ui center aligned large header very padded icon ">
+				<div class="content">
+					<br>
+					Qué es Linealidad?
+				</div>
+			</div>
+			<div class="ui container">
+				<br>
+				<br><h3>
+					Los objetos en el espacio tridimensional se forman a partir de <b style="color:red">puntos</b>, que forman <b style="color:red">rectas</b>, <b style="color:green">curvas</b>, que forman <b style="color:green">superficies</b>,
+					<b style="color:blue">planos</b>, que forman <b style="color:blue">volumenes</b>, etc.
+					Para dibujar un objeto en espacio tridimensional es necesario saber donde se va a colocar, para ello es necesario construir
+					un sistema de coordenadas que consiste en un punto como el <b>origen</b>, y la ubicación de todos los puntos que lo forman respecto a <b>tres coordenadas</b>:
+				</h3>
+				<br>
+				<div class="ui horizontal divider">
+					Sistema Coordenado Cartesiano
+				</div>
+				<div class="ui three column doubling stackable grid container">
+					<div class="column quitepadded">
+						<div class="ui card">
+							<div class="center centered image katexhuge">
+								{{#katex}}x{{/katex}}
+							</div>
+							<div class="content">
+								<a class="header quitepadded">Ancho desde el origen</a>
+								<div class="meta"><span class="date">x</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="column quitepadded">
+						<div class="ui card">
+							<div class="image katexhuge">
+								{{#katex}}y{{/katex}}
+							</div>
+							<div class="content">
+								<a class="header quitepadded">Alto desde el origen</a>
+								<div class="meta"><span class="date">y</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="column quitepadded">
+						<div class="ui card">
+							<div class="image katexhuge">
+								{{#katex}}z{{/katex}}
+							</div>
+							<div class="content">
+								<a class="header quitepadded">Profundidad desde el origen</a>
+								<div class="meta"><span class="date">z</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<h3>Estas coordenadas son conocidas como las <b>coordenadas cartesianas</b>.
+					<br>
+					<br>
+					Estas coordenadas escritas en un arreglo es llamado vector, por ejemplo el
+					vector {{#katex}}v{{/katex}}, cuyas coordenadas de manera general notaremos como :</h3>
+					<div class = "ui segment basic">
+						<div class="ui two column doubling stackable grid container">
+							<div class="column quitepadded">
+								<div class="ui card">
+									<div class="image katexhuge">
+										{{#katex}}v_{x},
+										v_{y},
+										v_{z}{{/katex}}
+									</div>
+									<div class="content">
+										<a class="header quitepadded">Coordenadas de manera general de {{#katex}}v{{/katex}}</a>
+										<div class="meta"><span class="date"><h3>son {{#katex}} 2 , 1 , 0 {{/katex}} respectivamente.</h3></span></div>
+									</div>
+								</div>
+
+							</div>
+							<div class="column">
+								<br>
+								<h3>Equivalente a
+									<br>
+									<br><div class="center aligned segment">
+										{{#katex}}v=\begin{pmatrix}
+										v_{x}\\
+										v_{y}\\
+										v_{z}
+										\end{pmatrix}=\begin{pmatrix}
+										2\\
+										1\\
+										0
+										\end{pmatrix} {{/katex}}
+									</div>
+								</h3>
+							</div>
+						</div>
+					</div>
+					<div class="ui horizontal divider" id="trig1"> Operaciones con vectores
+					</div>
+					<div class = "ui segment basic">
+						<br>
+						<h2>
+							Es posible realizar operaciones aritmeticas con los vectores, es decir :
+						</h2>
+						<br>
+						<div class="ui two column doubling stackable grid container">
+							<div class="column quitepadded">
+								<div class="ui card"
+								style="margin-left: auto;    margin-right: auto;">
+								<div class="image katexbig">
+									{{#katex}}
+									u+v=\begin{pmatrix}
+									u_{x}+v_{x}\\
+									u_{y}+v_{y}\\
+									u_{z}+v_{z}
+									\end{pmatrix}{{/katex}}
+								</div>
+								<div class="content">
+									<a class="header quitepadded"><h2>Suma de vectores:</h2>
+										<p> Representa geometricamente el vector dirigido hacia
+											el final del camino creado colocando un vector tras otro formando un solo
+											camino, preservando la longitud y la dirección de cada uno.
+											Tal y como se ve en la animación
+										</p>
+									</a>
+
+								</div>
+							</div>
+							<div class = "ui basic segment centered center aligned">
+								<div class="meta"><h3>
+									<div class="centro">
+										<br>
+										<br>
+										Y analíticamente se calcula asi:
+										Si
+										{{#katex}}
+										u=\begin{pmatrix}
+										u_{x}\\
+										u_{y}\\
+										u_{z}
+										\end{pmatrix}= \begin{pmatrix}
+										4\\
+										3\\
+										-1
+										\end{pmatrix}{{/katex}} y
+										{{#katex}}
+										v=\begin{pmatrix}
+										v_{x}\\
+										v_{y}\\
+										v_{z}
+										\end{pmatrix}= \begin{pmatrix}
+										2\\
+										5\\
+										2
+										\end{pmatrix}{{/katex}} <br>
+										<br>
+										su suma es
+
+
+										{{#katex}}
+										u+v=\begin{pmatrix}
+										u_{x}+v_{x}\\
+										u_{y}+v_{y}\\
+										u_{z}+v_{z}
+										\end{pmatrix}= \begin{pmatrix}
+										4+2\\
+										3+5\\
+										-1+2
+										\end{pmatrix}= \begin{pmatrix}
+										6\\
+										8\\
+										1
+										\end{pmatrix}{{/katex}}
+									</div>
+								</h3></div>
+							</div>
+						</div>
+						<div class="column quitepadded">
+							<div class="ui two column doubling stackable grid container">
+
+								<div class="ui card" style="margin-left: auto;    margin-right: auto;">
+									<div class="image katexbig">
+										{{#katex}}
+										u-v=\begin{pmatrix}
+										u_{x}-v_{x}\\
+										u_{y}-v_{y}\\
+										u_{z}-v_{z}
+										\end{pmatrix}{{/katex}}
+									</div>
+									<div class="content">
+										<a class="header quitepadded">
+											<h2>Diferencia de vectores: </h2><p>Geométricamente representa el vector que une
+												las dos cabezas de los vectores a substraer, dirigido hacia el vector inicial.</p>
+												<br>
+												También es un caso particular de la suma de vectores ya que {{#katex}}u-v=u+(-v){{/katex}}
+
+											</a>
+										</div>
+									</div>
+
+									<h3 class="centro ui segment basic centered center aligned">
+										<h3>
+											<br>
+											La diferencia es muy útil para crear vectores en el espacio, vectores que no nazcan en el origen.
+											<br>
+											Si queremos calcular la diferencia entre {{#katex}}u{{/katex}} y {{#katex}}v{{/katex}} analíticamente, procedemos así:
+											<br>
+										</h3>
+										{{#katex}}
+										u-v=\begin{pmatrix}
+										u_{x}-v_{x}\\
+										u_{y}-v_{y}\\
+										u_{z}-v_{z}
+										\end{pmatrix}= \begin{pmatrix}
+										4-2\\
+										3-5\\
+										-1-2
+										\end{pmatrix}= \begin{pmatrix}
+										4\\
+										-2\\
+										-3
+										\end{pmatrix}
+										{{/katex}}
+									</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+
+					<div class="ui segment basic center aligned">
+						<h1>Multiplicación por escalar (o número) </h1>
+						<h3>
+							Representa un escalamiento del vector, si {{#katex}}k{{/katex}} es el escalar entonces <br>
+							<div class="ui message">
+								<div class="header">
+
+								</div>
+								<ul class="list">
+									<li>Si {{#katex}} k &lt; 1{{/katex}} el escalamiento es una reducción </li>
+									<li>Si {{#katex}}k &gt; 1{{/katex}}, el escalamiento es un agrandamiento</li>
+									<li> Si {{#katex}}k=1{{/katex}} el escalamiento no modifica nada</li>
+								</ul>
+							</div>
+							<br>
+							Si queremos calcular {{#katex}}k*v{{/katex}} siendo {{#katex}}k=3{{/katex}} entonces
+							<br>
+							<br>
+							{{#katex}}
+							3 \cdot v= 3 \cdot \begin{pmatrix}
+							2\\
+							5\\
+							2
+							\end{pmatrix}= \begin{pmatrix}
+							6\\
+							15\\
+							6
+							\end{pmatrix}{{/katex}} <br>
+
+						</h3>
+					</div>
+
+
+					<div class="ui horizontal divider" id="trig2"> Combinacion Lineal
+					</div>
+					<h3>
+						Ya conociendo las propiedades de los vectores, podemos entender porque todos los vectores de la forma
+					</h3><div class="katexmid">
+
+
+						{{#katex}}v=\begin{pmatrix}
+						v_{x}\\
+						v_{y}\\
+						v_{z}
+						\end{pmatrix} {{/katex}}</div>
+						<br>
+						<h3>
+							se pueden escribir como una combinación lineal (Producto por escalar y Suma de vectores) de la siguiente manera
+
+						</h3><br>
+						<br>
+						<div class="ui three column very relaxed grid">
+							<div class="column ui katexmid">
+								{{#katex}}
+								v=v_{x}\begin{pmatrix}
+								1\\
+								0\\
+								0
+								\end{pmatrix}
+								+
+								v_{y}
+								\begin{pmatrix}
+								0\\
+								1\\
+								0
+								\end{pmatrix}
+								+v_{z}
+								\begin{pmatrix}
+								0\\
+								0\\
+								1
+								\end{pmatrix}
+								{{/katex}}
+							</div>
+							<div class="column ui katexmid">
+								{{#katex}}
+
+								=
+								2\begin{pmatrix}
+								1\\
+								0\\
+								0
+								\end{pmatrix}
+								+
+								5
+								\begin{pmatrix}
+								0\\
+								1\\
+								0
+								\end{pmatrix}
+								+2
+								\begin{pmatrix}
+								0\\
+								0\\
+								1
+								\end{pmatrix}
+								{{/katex}}
+							</div>
+							<div class="column ui katexmid">
+								{{#katex}}
+								=\begin{pmatrix}
+								2\\
+								0\\
+								0
+								\end{pmatrix}
+								+
+
+								\begin{pmatrix}
+								0\\
+								5\\
+								0
+								\end{pmatrix}
+								+
+								\begin{pmatrix}
+								0\\
+								0\\
+								2
+								\end{pmatrix}=
+								\begin{pmatrix}
+								2\\
+								5\\
+								2
+								\end{pmatrix}
+								{{/katex}}
+							</div>
+						</div>
+
+						<div class="ui horizontal divider">Base Canonica
+						</div>
+
+						<div class="ui items">
+							<div class="item">
+								<div class="image katexmid">
+									{{#katex}}
+									\begin{pmatrix}
+									1\\
+									0\\
+									0
+									\end{pmatrix},
+									\begin{pmatrix}
+									0\\
+									1\\
+									0
+									\end{pmatrix}
+									,
+									\begin{pmatrix}
+									0\\
+									0\\
+									1
+									\end{pmatrix}
+									{{/katex}}
+								</div>
+								<div class="content">
+									<a class="header">Base canonica del espacio en coordenadas cartesianas</a>
+									<div class="meta">
+										<span></span>
+									</div>
+									<div class="description">
+										<h3>Una Base se define como el conjunto de vectores que generan un espacio, es decir que todo vector es una combinación
+											lineal de los elementos de la base.</h3>
+										</div>
+										<div class="extra">
+											Con esta base se puede generar el espacio tridimensional.
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<br>
+							<br>
+
+						</div>
+
+					</div>
+				</div>
+			</template>

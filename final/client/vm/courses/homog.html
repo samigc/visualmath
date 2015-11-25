@@ -1,0 +1,342 @@
+<template name="vmesphomo">
+	{{> vmmenu}}
+	<div class="ui very padded" id="vmcontainer">
+
+		<div class="ui card violet vecUI" style="position : fixed; top : 50px; left : 40px ; z-index: 9; opacity:0">
+			<div class="content">
+				<div class="header">Transformacion Homogenea</div>
+				<div class="meta">Introduzca la matriz de transformación que quiere aplicar al objeto mostrado en la animación. <br>
+					{{> addformm2}}
+				</div>
+
+				<div class="description">
+					<div id="katexfield5" class="katexbig">
+
+					</div>
+				</div>
+			</div>
+			<div class="extra content">
+				Se aplicara la transformacion de acorde a la matriz ingresada.
+			</div>
+		</div>
+		<div id="explanation">
+
+
+			<div class = "ui very padded basic container segment center aligned ">
+				<div class="ui icon header very big">
+					<h1>Espacios Homogéneos</h1>
+				</div>
+				<div class="ui raised segment justify aligned">
+					<h4>
+						<br>
+						El espacio homogéneo apareció como solución al problema de no poder describir la traslación
+						como una matriz 3x3 ya que son límitadas y solamente pueden describir
+						transformaciones del tipo escalamiento, rotación, reflexión y deformación.
+						<div class="ui divider"></div>
+						El espacio homogéneo es un espacio 4 dimensional que permite ver su comportamiento en el espacio 3D tomando una proyección,
+						que en realidad es reducir la dimensión del espacio, haciendo una de ellas una constante.
+						Al añadir una dimensión a los vectores del espacio 3D, obtenemos una geometría más flexible que
+						la geometría euclidiana del plano cartesiano.
+					</h4>
+				</div>
+				<div class="ui grid center aligned">
+					<div class="five wide column center aligned">
+						<div class="ui red card">
+							<div class="header">
+								<h3>Vectores o Cuaterniones</h3>
+							</div>
+							<div class="image katexm margin10 ">
+								{{#katex}} 	\begin{pmatrix}x & y & z & w \end{pmatrix}  {{/katex}}
+							</div>
+							<div class="content">
+								<br>
+								<a class="description">Los elementos del espacio homogéneo son los vectores o cuaterniones,  las tranformaciones son descritas por matrices 4x4.</a>
+							</div>
+
+						</div>
+					</div>
+					<div class="seven wide column center  aligned">
+						<div class="ui raised center aligned segment red">
+							<h4> Este espacio puede identificarse con el espacio cartesiano 3D, ya que se puede
+								establecer una correspondencia sobreyectiva (se puede cubrir todo el espacio cartesiano) entre
+								<div class="katexm">
+									{{#katex}}
+									\begin{pmatrix}
+									x_h \\
+									y_h \\
+									z_h \\
+									w_h
+									\end{pmatrix}
+									{{/katex}}
+									y
+									{{#katex}}
+									\begin{pmatrix}
+									x_c \\
+									y_c \\
+									z_c
+									\end{pmatrix}
+									{{/katex}}
+
+								</div>
+
+								Para todos los números {{#katex}}x_h,y_h,z_h,w_h{{/katex}}.</h4>
+							</div>
+						</div>
+					</div>
+
+					<div class="ui horizontal divider">
+						<h3>Cambio de Coordenadas</h3>
+					</div>
+					<div class="ui segment center aligned raised">
+						<h4>    El cambio de coordenadas se determina de la siguiente manera, tomando a {{#katex}}w \neq 0{{/katex}} tenemos
+							las siguientes implicaciones, tomando al operador {{#katex}}\sim{{/katex}} como la equivalencia de un punto
+							en las coordenadas homogéneas con un punto en las coordenadas cartesianas. </h4>
+
+							<div class="katexmid">
+								{{#katex}}
+								\begin{pmatrix}
+								x&
+								y&
+								z &
+								1
+								\end{pmatrix}
+								\sim
+								\begin{pmatrix}
+								x&
+								y&
+								z
+								\end{pmatrix}
+								\Longrightarrow
+								\begin{pmatrix}
+								\frac{x}{w}&
+								\frac{y}{w}&
+								\frac{z}{w} &
+								1
+								\end{pmatrix}
+								\sim
+								\begin{pmatrix}
+								\frac{x}{w}&
+								\frac{y}{w}&
+								\frac{z}{w}
+								\end{pmatrix}
+								{{/katex}}
+								<br><br>{{#katex}}
+								\begin{pmatrix}
+								\frac{x}{w}&
+								\frac{y}{w}&
+								\frac{z}{w} &
+								1
+								\end{pmatrix}
+								\sim
+								\begin{pmatrix}
+								\frac{x}{w}&
+								\frac{y}{w}&
+								\frac{z}{w}
+								\end{pmatrix}
+								\Longrightarrow
+								\begin{pmatrix}
+								\frac{x}{w} w&
+								\frac{y}{w} w&
+								\frac{z}{w} w&
+								w
+								\end{pmatrix}
+								\sim
+								\begin{pmatrix}
+								\frac{x}{w} &
+								\frac{y}{w} &
+								\frac{z}{w}
+								\end{pmatrix}{{/katex}}
+								<br><br>
+								{{#katex}}
+								\begin{pmatrix}
+								\frac{x}{w} w&
+								\frac{y}{w} w&
+								\frac{z}{w} w&
+								w
+								\end{pmatrix}
+								\sim
+								\begin{pmatrix}
+								\frac{x}{w} &
+								\frac{y}{w} &
+								\frac{z}{w}
+								\end{pmatrix}
+								\Longrightarrow
+								\begin{pmatrix}
+								x&
+								y&
+								z&
+								w
+								\end{pmatrix}
+								\sim
+								\begin{pmatrix}
+								\frac{x}{w} &
+								\frac{y}{w} &
+								\frac{z}{w}
+								\end{pmatrix}
+								{{/katex}}
+							</div>
+						</div>
+
+						<div class="ui horizontal divider">
+							Puntos Homogeneos
+						</div>
+						<div class="ui segment raised center aligned">
+							<br><h4>
+								Algunos ejemplos de cambio de coordenadas homogeneas a cartesianas son
+								<div class="ui center aligned">
+									<div class="segment raised red margin10">
+										<div class="image katexmid">
+											{{#katex}}\begin{pmatrix}
+											4 &
+											5 &
+											2 &
+											-2
+											\end{pmatrix}
+											\sim
+											\begin{pmatrix}
+											-\frac{4}{2} &
+											-\frac{5}{2} &
+											-\frac{2}{2}
+											\end{pmatrix}
+											{{/katex}}<br><br>{{#katex}}
+											=
+											\begin{pmatrix}
+											-2 &
+											-\frac{5}{2} &
+											-1
+											\end{pmatrix}{{/katex}}
+										</div>
+									</div>
+									<div class="segment raised red margin10">
+										<div class="image katexmid">
+											{{#katex}}\begin{pmatrix}
+											8 &
+											10 &
+											4 &
+											-4
+											\end{pmatrix}
+											\sim
+											\begin{pmatrix}
+											-\frac{8}{4} &
+											-\frac{10}{4} &
+											-\frac{4}{4}
+											\end{pmatrix}
+											{{/katex}}<br><br>{{#katex}}
+											=\begin{pmatrix}
+											-2 &
+											-\frac{5}{2} &
+											-1
+											\end{pmatrix}{{/katex}}
+										</div>
+									</div>
+								</div>
+							</h4>
+							<h4>
+								Estos ejemplos ilustran el hecho de que a varios puntos del espacio homogéneo se
+								le puede asignar un solo punto.
+								Estos puntos son llamados <b>puntos homogéneos</b>
+							</h4>
+						</div>
+						<div class="ui horizontal divider">
+							<h3>Traslacion</h3>
+						</div>
+						<div class="ui segment center aligned red"><h4>
+							Uno de los usos fundamentales del espacio homogéneo es la traslación de objetos rigidos y
+							es descrita por la siguiente matriz <br>
+							<br>
+							<div class="katexmid margin10">
+								{{#katex}}
+								\begin{pmatrix}
+								1 & 0 & 0 & \Delta x \\
+								0 & 1 & 0 & \Delta y \\
+								0 & 0 & 1 & \Delta z \\
+								0 & 0 & 0 & 1
+								\end{pmatrix}
+								{{/katex}}
+							</div>
+
+							<br>
+							<br>
+							Donde claramente se ve el uso de la última columna, el argumento {{#katex}} \begin{pmatrix} \Delta x, \Delta y ,\Delta z \end{pmatrix} {{/katex}}
+							es el vector cuyo origen es la posición el objeto y su destino es la posición donde queremos ubicarlo.
+							<br>
+							Si queremos aplicarlo al vector {{#katex}}v=\begin{pmatrix}
+							v_{x}\\
+							v_{y}\\
+							v_{z}\\
+							v_{w}
+							\end{pmatrix} {{/katex}}, Haremos {{#katex}} v_w=1 {{/katex}} para que las primeras
+							tres coordenadas coincidan entre los vectores 3D y 4D. <br>
+							<br>
+							Entonces realizamos
+							<div class="katexmid margin10">
+								{{#katex}}\begin{pmatrix}
+								1 & 0 & 0 & \Delta x \\
+								0 & 1 & 0 & \Delta y \\
+								0 & 0 & 1 & \Delta z \\
+								0 & 0 & 0 & 1
+								\end{pmatrix} \begin{pmatrix}
+								v_{x}\\
+								v_{y}\\
+								v_{z}\\
+								1
+								\end{pmatrix} = \begin{pmatrix}
+								v_{x} + \Delta x \\
+								v_{y} + \Delta y \\
+								v_{z} + \Delta z \\
+								1
+								\end{pmatrix}  {{/katex}}
+							</div>
+						</h4>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</template>
+	<template name="addformm2">
+		<form class="matrixinput4 ui fluid input">
+			<table class="ui violet table">
+				<thead>
+					<tr><th>x</th>
+						<th>y</th>
+						<th>z</th>
+						<th>w</th>
+					</tr></thead><tbody>
+						<tr>
+							<td><input type="text" name="a11" class="matrixinput4" value="1"></td>
+							<td><input type="text" name="a12" class="matrixinput4" value="0"></td>
+							<td><input type="text" name="a13" class="matrixinput4" value="0"> </td>
+							<td><input type="text" name="a14" class="matrixinput4" value="0"> </td>
+						</tr>
+						<tr>
+							<td><input type="text" name="a21" class="matrixinput4" value="0"></td>
+							<td><input type="text" name="a22" class="matrixinput4" value="1"></td>
+							<td><input type="text" name="a23" class="matrixinput4" value="0"></td>
+							<td><input type="text" name="a24" class="matrixinput4" value="0"> </td>
+						</tr>
+						<tr>
+							<td><input type="text" name="a31" class="matrixinput4" value="0"></td>
+							<td><input type="text" name="a32" class="matrixinput4" value="0"></td>
+							<td><input type="text" name="a33" class="matrixinput4" value="1"></td>
+							<td><input type="text" name="a34" class="matrixinput4" value="0"> </td>
+						</tr>
+						<tr>
+							<td><input type="text" name="a41" class="matrixinput4" value="0"></td>
+							<td><input type="text" name="a42" class="matrixinput4" value="0"></td>
+							<td><input type="text" name="a43" class="matrixinput4" value="0"></td>
+							<td><input type="text" name="a44" class="matrixinput4" value="0"> </td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="center aligned"><input type="submit" name="submit" value="&#10003;"></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table><br>
+
+
+			</form>
+
+		</template>
