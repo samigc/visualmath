@@ -1,6 +1,10 @@
 # Visualmath
 Dynamic and interactive visualizations of foundations of Algebraic Geometry.
 
+##DEMO
+
+[Go to Demo](http://visualmath.meteor.com/vm)
+
 ##Installing 
 
 To use VisualMath served in your computer you need to [install the latest official Meteor] (https://www.meteor.com/install) release from your terminal:
@@ -19,7 +23,7 @@ First you have to download the repository with the following command
 
 ```git clone https://github.com/samigc/visualmath.git ```
 
-Then, go to the directory called *three* and run meteor:
+Then, go to the directory called *final* and run meteor:
 
 ``` meteor ```
 
