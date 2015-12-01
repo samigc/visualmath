@@ -1,17 +1,91 @@
 <template name="matshet">
 	<div id="controls">
-		Shearing of a cube in 3D<br>
-		<div id="shear-matrix" style="margin:5px;padding:5px;">
-		</div>
-		<div id ="button">
-			Select the dimension to shear.
-			<a id="x-b" class="btn" title="x-b"> x </a>
-			<a id="y-b" class="btn" title="y-b"> y </a>
-			<a id="z-b" class="btn" title="z-b"> z </a>
-			<a id="z-reset" class="btn" title="z-b"> reset s&t </a>
-		</div>
-	</div>
+		<h1>Deformar </h1> <br>
+		<div class="merry texto">
+			La deformación que puede ser descrita como el movimiento de solamenteoun grupo de
+			puntos del objeto, el movimiento es un cambio longitud (Multiplicación por escalar) y de dirección (Suma de vectores).
+			<br>
+			<br>	<ul>
+				<li> Si se cambia en {{#katex}}s{{/katex}} unidades en el valor en la posición {{#katex}}1,2{{/katex}} de la matriz de transformación,
+					esta me representa un cambio en la primera a componente (de ancho) igual a s veces el valor de la segunda componente (de altura).
+					<br>
+					Lo verificaremos con un vector aleatorio {{#katex}}\begin{pmatrix}
+					4  \\
+					8  \\
+					12
+					\end{pmatrix}{{/katex}}	{{#katex}} \begin{pmatrix}
+					1 & s & 0  \\
+					0 & 1 & 0  \\
+					0 & 0 & 1
+					\end{pmatrix} \begin{pmatrix}
+					4  \\
+					8  \\
+					2
+					\end{pmatrix}= \begin{pmatrix}
+					4+8 s  \\
+					8  \\
+					2
+					\end{pmatrix}{{/katex}}</li>
+					<br>
+					<li>Si se cambia en {{#katex}}s{{/katex}} unidades en el valor en la posición {{#katex}}3,2{{/katex}} de la matriz de transformación,
+						esta me representa un cambio en la tercera componente (de profundidad) igual a s veces el valor de la segunda componente (de altura).
+						Lo verificaremos con el vector anterior : <br>
+						{{#katex}} \begin{pmatrix}
+						1 & 0 & 0  \\
+						0 & 1 & 0  \\
+						0 & s & 1
+						\end{pmatrix} \begin{pmatrix}
+						4  \\
+						8  \\
+						2
+						\end{pmatrix}= \begin{pmatrix}
+						4  \\
+						8  \\
+						2+8s
+						\end{pmatrix}{{/katex}} </li>
+						<br>
+						<li>Si se cambia en {{#katex}}s{{/katex}} unidades en el valor en la posición {{#katex}}3,3{{/katex}} de la matriz de transformación,
+							esta me representa un cambio en la tercera componente (de profundidad) igual a s veces el valor de la tercera componente (de profundidad).
+							Lo verificaremos con el vector anterior : <br>
+							{{#katex}} \begin{pmatrix}
+							1 & 0 & 0  \\
+							0 & 1 & 0  \\
+							0 & 0 & 1+s
+							\end{pmatrix} \begin{pmatrix}
+							4  \\
+							8  \\
+							2
+							\end{pmatrix}= \begin{pmatrix}
+							4  \\
+							8  \\
+							2+2s
+							\end{pmatrix}{{/katex}} </li>
+						</ul>
+						De la misma manera funciona para todas las posiciones de la matriz.
+						<br>
+						Las matrices describen la tranformación del cubo dibujado en la escena
+						con el teclado
+						<ul>
+							<li><h3>A</h3>: Posicion </li>
+						</ul>
+					</div>
+					<div id="shear-matrix" style="margin:5px;padding:5px;">
+					</div>
+					<div id ="button">
+						Seleccionar la dirección en la que se va a deformar.
+						<a id="x-b" class="btn" title="x-b"> x </a>
+						<a id="y-b" class="btn" title="y-b"> y </a>
+						<a id="z-b" class="btn" title="z-b"> z </a>
+						<a id="z-reset" class="btn" title="z-b"> reset s&t </a>
+					</div>
+					<span id="shear-matrix1" style="margin:5px;padding:5px;">
+					</span>
+					<span id="shear-matrix2" style="margin:5px;padding:5px;">
+					</span>
+					<span id="shear-matrix3" style="margin:5px;padding:5px;">
+					</span>
+				</div>
 
-	<div id="top">
-	</div>
-</template>
+				<div id="top">
+				</div>
+			</template>

@@ -163,6 +163,7 @@ Template.matshet.rendered = function(){
 			0,1,0,0,
 			s,t,1,0,
 			0,0,0,1);
+
 		}
 		if(gl.shear == "y"){
 		ref.set(1,0,0,0,
@@ -177,11 +178,20 @@ Template.matshet.rendered = function(){
 			0,0,0,1);
 		}
 		gl.cube.cube.matrix.copy(ref);
-
+		console.log(ref);
 
 		var elem=$("#shear-matrix");
-
 		katex.render("( s : "+ s +",  t : "+ t +" )",elem.get(0));
+
+		var elem1=$("#shear-matrix1");
+		katex.render("\\begin{pmatrix} 1 & 0 & 0 & 0\\\\ 0 & 1 & 0 & 0 \\\\"+ s +" & "+ t +"& 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{pmatrix}",elem1.get(0));
+
+		var elem2=$("#shear-matrix2");
+		katex.render("\\begin{pmatrix} 1 & 0 & 0 & 0\\\\ "+ s +" & 1 & "+ t +" & 0 \\\\0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{pmatrix}",elem2.get(0));
+
+		var elem3=$("#shear-matrix3");
+		katex.render("\\begin{pmatrix} 1 &"+ s +" & "+ t +" & 0\\\\ 0 & 1 & 0 & 0 \\\\0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{pmatrix}",elem3.get(0));
+
 	}
 }
 
