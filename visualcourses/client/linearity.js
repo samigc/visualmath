@@ -96,6 +96,11 @@ Template.lineart.rendered = function(){
 	                                gl.base.geom[i].setColor(0xff1e33);
 	                                gl.scene.add(gl.base.geom[i]);
 	                        }
+
+
+				////////////////////////////////////////////////////////////////////////
+
+
 	                        gl.container = $('.graphics');
 	                        gl.base.geom[0].activateTag("\\cdot {\\hat{i}}",{top : 50 , fontSize : 19 , jQueryContainer : gl.container , katex:true , id : "basevx", color: "#ff0033"});
 	                        gl.base.geom[1].activateTag(" \\cdot {\\hat{j}}",{top : 50 , fontSize : 19 , jQueryContainer : gl.container , katex:true , id : "basevy", color: "#ff0033"});
@@ -195,6 +200,8 @@ Template.lineart.rendered = function(){
 	                        )
 	                        .delay(6000)
 	                        .start();
+
+__________________________________________________________________
 
 	                }
 	                gl.container.append(gl.renderer.domElement);

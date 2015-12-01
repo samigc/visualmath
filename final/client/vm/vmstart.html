@@ -1,0 +1,107 @@
+<template name="vmstart">
+	{{> sitemenu}}
+	{{> vmmenu}}
+	<div id="vmcontainer">
+		<div class="ui center aligned huge header">
+			<h1>Visual Math</h1>
+			<div class="sub header">
+				<h2>Visualizar las matematicas es <b>entender</b> las matematicas</h2>
+				<br>
+			</div>
+		</div>
+		<div class="ui horizontal divider"></div>
+		<div id="vmcontainer2" class="ui text container">
+			<div class="ui basic segment">
+				<h3>
+					<i>
+						Visual Math es un conjunto de visualizaciones de las matematicas que ilustran
+						conceptos basicos pero claves del algebra lineal y las transformaciones matriciales.
+					</i>
+				</h3>
+			</div>
+
+			<div class="ui basic segment right aligned">
+				<h3> ... Comienza ya mismo, explorando algunos
+					<a href="/vm/conceptos/linealidad"> conceptos</a>
+					<br>
+					O explora el menu para ver los temas.
+				</h3>
+			</div>
+
+		</div>
+	</div>
+</template>
+<template name="vmmenu">
+	<div class="cover" id="cover"
+	style="margin 0px;
+	left : 0px;
+	top : 0;
+	bottom : 0;
+	right : 0;
+	position : fixed;
+	background : #99a;
+	opacity : 0;
+	z-index : 12;
+	width : 0%;
+	-moz-box-shadow:    inset 0 0 180px #000000;
+	-webkit-box-shadow: inset 0 0 180px #000000;
+	box-shadow:         inset 0 0 180px #000000;
+	height : 0%;"
+	></div>
+	<button class="ui big launch right attached button" id="vmmenubtn" style="opacity : 0.7; z-index:11">
+		<object type="image/svg+xml" data="/infinite3.svg" class="ui image vmlogo vmlogoheader" id="vmsvg"></object>
+		Menu
+	</button>
+	<div class="ui vertical inverted sticky menu fixed top vmmenu" style="left: 0px; width:0px; margin : 0; opacity : 0; z-index:-13; -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 20px #000000;
+   box-shadow:         inset 0 0 20px #000000;">
+		<div class="item"><a href="/vm/start" class="item">
+			<object type="image/svg+xml" data="/infinite3.svg" class="ui image vmlogo vmlogoheader" id="vmsvg"></object>
+			<b>Visual Math</b></a></div>
+			<div class="item">
+				<div class="header">
+					<b>Conceptos</b>
+				</div>
+				<div class="menu">
+					<a class="item" href="/vm/conceptos/linealidad">Linealidad</a>
+					<a class="item" href="/vm/conceptos/matrices">
+						Matrices y Operaciones
+					</a>
+					<a class="item" href="/vm/conceptos/espacioshomogeneos">
+						Espacios Homogeneos
+					</a>
+				</div>
+			</div><div class="item">
+				<div class="header">
+					<b>Transformaciones</b>
+				</div>
+				<div class="menu">
+					<a class="item" href="/vm/transformaciones/rotacionreflexion">
+						Rotación y Reflexión
+					</a>
+					<a class="item" href="/vm/transformaciones/escalamiento">
+						Escalamiento
+					</a>
+					<a class="item" href="/vm/transformaciones/deformacion">
+						Deformación
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<div class="header">
+					<b>Acerca de Visual Math</b>
+				</div>
+				<div class="menu">
+					<div class="item">
+						Visualmath.js
+					</div>
+					<div class="item">
+						Ejemplos
+					</div>
+					<div class="item">
+						Documentacion
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>

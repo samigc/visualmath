@@ -1,0 +1,184 @@
+<template name="vmtrrotref">
+	{{> vmmenu}}
+	<div class="ui very padded container center aligned" id="vmcontainer">
+		<div class="ui segment basic center aligned">
+			<br>
+			<div class="icon header">
+				<h1>Rotacion</h1>
+			</div>
+
+			<div class="ui segment raised aligned red">
+				<h3>
+					La rotación es una transformación que mueve un objeto o un conjunto de puntos
+					alrededor de un eje o un vector
+					Existen matrices que rotan objetos, es decir que al multiplicarla por un vector o un
+					conjunto de ellos, les cambia la dirección y el objeto resultante es el objeto rotado.
+					<br>
+					Los argumentos necesitados son el angulo y el eje respecto al cual el objeto va a rotar.
+				</h3>
+			</div>
+			<br>
+			<div class="horizontal divider ui">
+				<h3>Espacio 2D (Plano)</h3>
+			</div>
+			<div class="ui grid">
+				<div class="one wide column">
+				</div>
+				<div class="four wide column">
+					<div class="ui card red">
+						<div class="image katexmid margin10">
+							{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
+							-Sin(\theta) & Cos(\theta)
+							\end{pmatrix}{{/katex}}
+						</div>
+						<div class="content">
+							<a class="header">Matriz de rotación</a>
+							<div class="description">
+								Vamos a ilustar lo dicho en el espacio 2D <br><br>
+								Si queremos rotar respecto al origen {{#katex}}\theta{{/katex}} radianes o
+								grados en sentido contrario de las manecillas del reloj, podemos usar la matriz de rotación
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="two wide column">
+				</div>
+				<div class="eight wide column">
+					<div class="ui segment basic centered red">
+						<h3>
+							La base del espacio transformada genera una nueva base, y está dada por:
+						</h3>
+						<div class="image katexm margin10">
+							{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
+							-Sin(\theta) & Cos(\theta)
+							\end{pmatrix} \begin{pmatrix} 1\\ 0 \end{pmatrix}=  \begin{pmatrix} Cos(\theta)
+							\\ Sin(\theta) \end{pmatrix} {{/katex}}
+						</div>
+
+						<div class="horizontal divider">
+							<i>y</i>
+						</div>
+						<div class="image katexm margin10">
+							{{#katex}} \begin{pmatrix}Cos(\theta) & Sin(\theta) \\
+							-Sin(\theta) & Cos(\theta)
+							\end{pmatrix} \begin{pmatrix} 0\\ 1 \end{pmatrix}=  \begin{pmatrix} -Sin(\theta)
+							\\ Cos(\theta) \end{pmatrix} {{/katex}}
+						</div>
+					</div>
+				</div>
+
+				<div class="one wide column">
+				</div>
+
+			</div>
+			<div class="ui segment basic center aligned">
+				<h3>Por ejemplo si queremos rotar el vector  {{#katex}}\left(
+					\begin{array}{c}
+					3\\
+					-2
+					\end{array}
+					\right){{/katex}} ,<span class="katexbig"> {{#katex}}\frac{\pi}{2}{{/katex}}</span> radianes o 90 grados, realizamos
+					la siguiente operación</h3>
+					<div class="katexmid margin10">
+						{{#katex}}
+						\begin{pmatrix}Cos(\frac{\pi}{2}) & Sin(\frac{\pi}{2}) \\
+						-Sin(\frac{\pi}{2}) & Cos(\frac{\pi}{2})
+						\end{pmatrix}
+						\begin{pmatrix}
+						3\\
+						-2
+						\end{pmatrix}= \begin{pmatrix} 0 & 1 \\
+						-1 & 0
+						\end{pmatrix}
+						\begin{pmatrix}
+						3\\
+						-2
+						\end{pmatrix}=\begin{pmatrix}
+						-2\\
+						-3
+						\end{pmatrix}{{/katex}}
+					</div>
+				</div>
+				<div class="horizontal divider blue ui">
+					<h3>Espacio 3D </h3>
+				</div>
+				<h3>
+					En el espacio 3D podemos rotar un objeto alrededor de los ejes X, Y, Z con la siguientes transformaciones
+				</h3>
+				<div class="ui grid center aligned">
+
+					<div class="ui column five wide">
+						<div class="ui segment raised blue">
+							<div class="image katexm margin10">
+								{{#katex}} R_X=\begin{pmatrix}
+									1& 0 & 0 \\
+									0 & Cos(\theta) & Sin(\theta) \\
+									0&-Sin(\theta) & Cos(\theta)
+									\end{pmatrix}{{/katex}}
+							</div>
+							<div class="content">
+								<h3 class="header">Alrededor del eje X </h3>
+							</div>
+						</div>
+					</div>
+					<div class="ui  column five wide">
+						<div class="ui segment raised blue">
+						<div class="image katexm margin10">
+							{{#katex}} R_Y=\begin{pmatrix}
+								Cos(\theta)& 0 & Sin(\theta) \\
+								0 & 1 & 0 \\
+								-Sin(\theta)& 0 & Cos(\theta)
+								\end{pmatrix}{{/katex}}
+						</div>
+						<div class="content">
+							<h3 class="header">Alrededor del eje Y </h3>
+						</div>
+					</div>
+					</div>
+					<div class="ui column five wide">
+						<div class="ui segment raised blue">
+						<div class="image katexm margin10">
+							{{#katex}} R_Z=\begin{pmatrix}
+								Cos(\theta) & Sin(\theta) & 0 \\
+								-Sin(\theta) & Cos(\theta)	&0 \\
+								0 & 0 & 1
+								\end{pmatrix}{{/katex}}
+						</div>
+						<div class="content">
+							<h3 class="header">Alrededor del eje Z </h3>
+						</div>
+					</div>
+					</div>
+					<div class="segment ui center aligned raised blue"><h3>
+					Así que si primero queremos rotar respecto al eje x, luego
+							respecto al eje y respecto al eje z , la matriz de transformación será {{#katex}} R_Z \cdot R_Y \cdot R_X{{/katex}}
+
+				</h3></div>
+				<br><br>
+				</div>
+				<div class="horizontal divider ui">
+					<h3>Rotacion en 3D Alrededor de un Vector</h3>
+				</div>
+				<div class="ui center aligned basic segment">
+					<div class="ui segment compact blue" style="margin-right : auto; margin-left : auto;">
+						<div class="ui star rating" data-rating="4"></div>
+					<div class="image katexmid margin10">
+						{{#katex}} \begin{pmatrix}
+						x^2 (1-Cos(\theta))+Cos(\theta) & x y (1-Cos(\theta))-z Sin(\theta) & x z (1-Cos(\theta))-y Sin(\theta) \\
+						x y (1-Cos(\theta))-z Sin(\theta) & x^2 (1-Cos(\theta))+ Cos(\theta)	& y z (1-Cos(\theta))-x Sin(\theta) \\
+						x z (1-Cos(\theta))-y Sin(\theta) & y z (1-Cos(\theta))-x Sin(\theta) & x^2 (1-Cos(\theta))+Cos(\theta)
+						\end{pmatrix}{{/katex}}
+					</div>
+					<div class="content">
+						<h3 class="header">Matriz de rotacion alrededor de un Vector </h3>
+					</div>
+					<div class="description">
+						En el espacio 3D podemos rotar un objeto alrededor de un vector
+							{{#katex}} 	\begin{pmatrix}x & y & z \end{pmatrix}  {{/katex}}
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</template>

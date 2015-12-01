@@ -149,7 +149,7 @@ Template.vecaddi.rendered = function() {
                   .delay(4000)
                   .start();
 
-
+__________________________________________________________________
 
           //Now add the domevent
           var domEvents = new THREEx.DomEvents(gl.camera,gl.renderer.domElement);

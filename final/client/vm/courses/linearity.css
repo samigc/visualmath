@@ -1,0 +1,60 @@
+.katexhuge {
+	font-size: 50px;
+	padding: 30px;
+	text-align: center;
+}
+
+.katexlarge {
+	font-size: 35px;
+	padding: 20px;
+	text-align: center;
+}
+
+.katexbig {
+	font-size: 25px;
+	padding: 10px;
+	text-align: center;
+}
+
+.katexmid {
+	font-size: 20px;
+	padding: 5px;
+	text-align: center;
+}
+
+.katexm {
+	font-size: 15px;
+	padding: 4px;
+	text-align: center;
+}
+
+.katexsm {
+	font-size: 12px;
+	padding: 3px;
+	text-align: center;
+}
+
+.katexxs {
+	font-size: 10px;
+	padding: 2px;
+	text-align: center;
+}
+
+.margin10 {
+	margin : 10px !important;
+	padding : 10px !important;
+}
+
+.quitepadded {
+	padding: 7px;
+}
+
+.vcent {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vecUI {
+	opacity : 0;
+}
